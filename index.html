@@ -1437,6 +1437,42 @@ body.talking .pip-mini .pip-beak,body.talking .pip-talk .pip-beak,body.talking .
 .v38-turtle[data-c="g"]{background:#13804F;color:#fff}
 .v38-turtle.demo{display:inline-flex}.v38-turtle.demo .v38-shell{animation:v38walk 4s linear infinite}
 @media (max-width:420px){.v38-board{grid-template-columns:repeat(var(--c),44px)}.v38-board span{width:44px;height:44px;font-size:26px}.v38-track{width:100px}}
+/* v39: Help */
+.help-btn{width:auto!important;min-width:48px;padding:0 10px!important;display:inline-flex;align-items:center;gap:4px}
+.help-btn small{font-family:var(--display);font-weight:700;font-size:14px;color:#8A5A00}
+.help-btn.used{opacity:.55}
+.help-card{background:#FFF6DA;border:2px dashed var(--sun-deep);border-radius:18px;padding:10px 14px;display:flex;flex-direction:column;gap:8px;animation:slideUp .3s}
+.help-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:var(--display);font-size:17px;color:#6B4600}
+.help-top small{font-family:var(--read);font-size:14px;color:#8A5A00}
+.help-dots{display:inline-flex;gap:4px}.help-dots i{width:10px;height:10px;border-radius:50%;background:#F2D27A}.help-dots i.on{background:#E08A00}
+.help-step{display:flex;gap:10px;align-items:flex-start;font-size:17px;line-height:1.45}
+.help-step.new{animation:popIn .45s}
+.help-n{flex:none;width:26px;height:26px;border-radius:50%;background:#E08A00;color:#fff;font-family:var(--display);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
+.help-step .h-why{display:block;color:#6B5A2E;font-size:15px}
+.help-step .emo{font-size:1.1em}
+.help-more{align-self:flex-start}
+.help-end{color:#6B4600;font-family:var(--display);font-size:15px}
+.opt.out{opacity:.4;filter:grayscale(.8);position:relative}
+.opt.out::after{content:"";position:absolute;left:10%;right:10%;top:50%;height:4px;border-radius:2px;background:#E5484D;transform:rotate(-8deg);animation:v39cut .35s ease both}
+@keyframes v39cut{from{transform:rotate(-8deg) scaleX(0)}to{transform:rotate(-8deg) scaleX(1)}}
+#timer.helped{opacity:.6}
+/* v40: science & social studies */
+.v40-map{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
+.v40-compass{font-family:var(--display);font-weight:700;font-size:15px;line-height:1.3;text-align:center;color:var(--ink);background:#fff;border-radius:50%;width:74px;height:74px;display:flex;flex-direction:column;justify-content:center;box-shadow:inset 0 0 0 2px #C9D8F0}
+.v40-compass b{font-weight:700}
+.v40-grid{display:grid;grid-template-columns:repeat(3,84px);gap:6px}
+.v40-grid>span{height:72px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 2px #C9D8F0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:30px}
+.v40-grid small{font-family:var(--display);font-size:11px;color:var(--muted);line-height:1.1;text-align:center}
+.v40-gridmap{display:grid;grid-template-columns:28px repeat(4,58px);gap:4px;justify-content:center;align-items:center}
+.v40-gridmap b{font-family:var(--display);text-align:center;color:#fff;background:#7FA7E8;border-radius:8px;padding:2px 0;font-size:15px}
+.v40-gridmap>span{height:52px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 2px #C9D8F0;display:flex;align-items:center;justify-content:center;font-size:28px}
+.v40-gridmap>span:first-child{background:none;box-shadow:none}
+.v40-tl{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:22px;justify-content:center}
+.v40-tl i{flex:0 1 200px;height:6px;border-radius:3px;background:linear-gradient(90deg,#7FA7E8,#22B573)}
+.v40-evs{display:flex;flex-direction:column;gap:6px;text-align:left;font-size:17px}
+.v40-evs span{background:#fff;border-radius:12px;padding:6px 12px;box-shadow:inset 0 0 0 2px #C9D8F0}
+.v40-evs b{font-family:var(--display);color:#1C64D8;margin-right:6px}
+@media (max-width:420px){.v40-grid{grid-template-columns:repeat(3,72px)}.v40-gridmap{grid-template-columns:24px repeat(4,50px)}.v40-gridmap>span{height:46px;font-size:24px}}
 /* v26: name prompt */
 .na-ov{position:fixed;inset:0;z-index:95;background:rgba(29,43,79,.6);display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto;animation:fadeIn .25s ease}
 .na-card{background:#fff;border-radius:28px;box-shadow:0 18px 50px rgba(29,43,79,.35);width:min(460px,100%);padding:24px 22px;display:flex;flex-direction:column;align-items:stretch;gap:12px;text-align:center;animation:xoUp .35s cubic-bezier(.2,1.3,.4,1)}
@@ -1506,7 +1542,7 @@ body.talking .pip-mini .pip-beak,body.talking .pip-talk .pip-beak,body.talking .
       <small class="hint">Buttons to move on stay gray until Pip finishes explaining, at either pace.</small>
     </div>
     <div class="toggle-row"><label for="set-explainov">Pip shows each answer on a big animated screen (and explains wrong answers with a picture)</label><input type="checkbox" class="switch" id="set-explainov"></div>
-    <p class="app-ver">Version 2026-11-20g · new focus topics: Eagle Eyes, Listen & Follow, Slow & Steady</p>
+    <p class="app-ver">Version 2026-11-20i · new subjects: Science and Social Studies</p>
     <div class="toggle-row"><label for="set-readopts">Pip reads each answer choice aloud before kids answer</label><input type="checkbox" class="switch" id="set-readopts"></div>
     <div class="toggle-row"><label for="set-autonext">Go to the next question by itself</label><input type="checkbox" class="switch" id="set-autonext"></div>
     <div class="field">
@@ -29775,6 +29811,723 @@ for (const age of [6, 7, 8, 9]) {
   ["slowsteady", "listenfollow", "eagleeyes"].forEach(id => { const i = arr.findIndex(t => t.id === id); if (i >= 0) arr.splice(1, 0, arr.splice(i, 1)[0]); });
 }
 
+/* =====================================================================
+   v40: two new subjects — Science 🔬 and Social Studies 🌎 — for ages 6–9.
+   Topics follow US grade 1–4 standards (NGSS for science, C3 framework for
+   social studies). Every question has a reason for each wrong answer (whyNot).
+   ===================================================================== */
+for (const a of [6, 7, 8, 9]) { C[a].science = []; C[a].social = []; TRICKS[a].science = {}; TRICKS[a].social = {}; }
+const V40_E = (e, n) => e ? `<span class="emo" title="${n}">${e}</span>` : "";
+const V40_O = (e, n) => e ? `${V40_E(e, n)} ${n}` : n;
+const V40_an = w => (/^[aeiou]/i.test(w) && !/^(uni|use|eu|one)/i.test(w) ? "an " : "a ") + w;
+const V40_list = a => a.length <= 2 ? a.join(" and ") : `${a.slice(0, -1).join(", ")}, and ${a[a.length - 1]}`;
+const V40_Q = o => Object.assign({ v40: { xo: "reveal" } }, o);
+
+/* ---- builder: sort things into groups ----
+   items: [name, emoji, groupKey]; groups: {key: [singular phrase, plural phrase]} */
+function V40_sort(items, groups, kid) {
+  const keys = Object.keys(groups), g = pick(keys), others = items.filter(x => x[2] !== g), ins = items.filter(x => x[2] === g);
+  const lab = x => V40_O(x[1], cap(x[0])), whyNot = {};
+  const fmt = keys.length === 2 && Math.random() < 0.3 ? "ask" : Math.random() < 0.6 ? "is" : "not";
+  if (fmt === "ask") {
+    const it = pick(items), opts = keys.map(k => cap(groups[k][2] || groups[k][0].replace(/^(a|an|the) /, "")));
+    const ans = cap(groups[it[2]][2] || groups[it[2]][0].replace(/^(a|an|the) /, ""));
+    opts.forEach(o => { if (o !== ans) whyNot[o] = `${cap(it[0])}: that's ${groups[it[2]][0]}.`; });
+    return V40_Q({ q: `${V40_E(it[1], it[0])} <b>${cap(it[0])}</b>: is it <b>${keys.map(k => (groups[k][2] || groups[k][0]).toLowerCase()).join("</b> or <b>")}</b>?`, opts, ans, why: `${cap(it[0])}: that's ${groups[it[2]][0]}.`, whyNot, key: `${kid}A${it[0]}` });
+  }
+  if (fmt === "is") {
+    const one = pick(ins), three = shuffle(others).slice(0, 3);
+    three.forEach(x => { whyNot[lab(x)] = `${cap(x[0])}: that's ${groups[x[2]][0]}, not ${groups[g][0]}.`; });
+    return V40_Q({ q: `Which one is <b>${groups[g][0]}</b>?`, opts: shuffle([one, ...three]).map(lab), ans: lab(one), why: `${cap(one[0])}: that's ${groups[g][0]}.`, whyNot, key: `${kid}I${one[0]}${three.map(x => x[0])}` });
+  }
+  if (!others.length || ins.length < 3 || /\bnon|^not\b/.test(groups[g][0])) return V40_sort(items, groups, kid); /* no double negatives */
+  const odd = pick(others), three = shuffle(ins).slice(0, 3);
+  three.forEach(x => { whyNot[lab(x)] = `${cap(x[0])}: that IS ${groups[g][0]}. Look for the one that is not.`; });
+  return V40_Q({ q: `Which one is <b>NOT</b> ${groups[g][0]}?`, opts: shuffle([odd, ...three]).map(lab), ans: lab(odd), why: `${cap(odd[0])}: that's ${groups[odd[2]][0]}. The others are ${groups[g][1]}.`, whyNot, key: `${kid}N${odd[0]}${three.map(x => x[0])}` });
+}
+/* ---- builder: match pairs ----
+   pairs: [a, aEmoji, b, bEmoji]; ask: {ab: a => question asking for b, ba: b => question asking for a} */
+function V40_match(pairs, ask, kid) {
+  const p = pick(pairs), rev = ask.ba && Math.random() < 0.4, seen = new Set([rev ? p[0] : p[2]]), pool = [];
+  /* wrong options: never another right answer, never the same option twice */
+  for (const x of shuffle(pairs.filter(x => x !== p && x[2] !== p[2] && x[0] !== p[0]))) { const v = rev ? x[0] : x[2]; if (!seen.has(v)) { seen.add(v); pool.push(x); } if (pool.length === 3) break; }
+  const L = (e, n) => V40_O(e, n), whyNot = {};
+  if (!rev) {
+    const opts = [L(p[3], p[2]), ...pool.map(x => L(x[3], x[2]))];
+    pool.forEach(x => { whyNot[L(x[3], x[2])] = ask.whyB ? ask.whyB(x) : `${cap(x[2])} goes with ${x[0]}, not ${p[0]}.`; });
+    return V40_Q({ q: ask.ab(p), vis: p[1] ? `<div class="v27-show sm">${V40_E(p[1], p[0])}</div>` : undefined, opts: shuffle(opts), ans: L(p[3], p[2]), why: ask.why ? ask.why(p) : `${cap(p[0])} goes with ${p[2]}.`, whyNot, key: `${kid}M${p[0]}|${pool.map(x => x[2])}` });
+  }
+  const opts = [L(p[1], p[0]), ...pool.map(x => L(x[1], x[0]))];
+  pool.forEach(x => { whyNot[L(x[1], x[0])] = ask.whyA ? ask.whyA(x) : `${cap(x[0])} goes with ${x[2]}, not ${p[2]}.`; });
+  return V40_Q({ q: ask.ba(p), vis: p[3] ? `<div class="v27-show sm">${V40_E(p[3], p[2])}</div>` : undefined, opts: shuffle(opts), ans: L(p[1], p[0]), why: ask.why ? ask.why(p) : `${cap(p[0])} goes with ${p[2]}.`, whyNot, key: `${kid}R${p[2]}|${pool.map(x => x[0])}` });
+}
+/* ---- builder: put steps in order ----  seqs: [title, [[step, emoji], ...], cyclic?] */
+const V40_ORDW = ["first", "second", "third", "fourth", "fifth", "sixth"];
+function V40_order(seqs, kid) {
+  const [title, st, cyc] = pick(seqs), n = st.length, lab = x => V40_O(x[1], cap(x[0])), whyNot = {};
+  const m = pick(["after", "before", "first"]);
+  let i, q, ans, j = -1;
+  if (m === "first") { i = 0; q = `In ${title}, what comes <b>FIRST</b>?`; }
+  else if (m === "after") { j = R(0, cyc ? n - 1 : n - 2); i = (j + 1) % n; q = `In ${title}, what comes right <b>AFTER</b> ${V40_O(st[j][1], st[j][0])}?`; }
+  else { j = R(cyc ? 0 : 1, n - 1); i = (j - 1 + n) % n; q = `In ${title}, what comes right <b>BEFORE</b> ${V40_O(st[j][1], st[j][0])}?`; }
+  ans = lab(st[i]);
+  const others = shuffle(st.filter((_, k) => k !== i && k !== j)).slice(0, 3);
+  others.forEach(x => { whyNot[lab(x)] = `${cap(x[0])} is step ${st.indexOf(x) + 1}. The order is ${st.map(y => y[0]).join(" → ")}.`; });
+  return V40_Q({ q, opts: shuffle([st[i], ...others]).map(lab), ans, why: `The order is ${st.map(y => y[0]).join(" → ")}${cyc ? ", and then it starts again" : ""}.`, whyNot, key: `${kid}O${title}${m}${i}` });
+}
+/* ---- builder: fact questions ----  bank: [q, ans, [w1,w2,w3], why, emoji?, [r1,r2,r3]?] */
+function V40_fact(bank, kid) {
+  const [q, ans, wr, why, e, rs] = pick(bank), whyNot = {};
+  wr.forEach((w, i) => { whyNot[w] = rs && rs[i] ? rs[i] : `Not quite. ${why}`; });
+  return V40_Q({ q, vis: e ? `<div class="v27-show sm">${e}</div>` : undefined, opts: shuffle([ans, ...wr]), ans, why, whyNot, key: `${kid}F${q}` });
+}
+/* ---- topic helper ---- */
+function V40_topic(age, subj, o) {
+  TRICKS[age][subj][o.id] = o.trick;
+  const mix = o.mix, tot = mix.reduce((s, x) => s + x[1], 0);
+  topic(age, subj, {
+    id: o.id, title: o.title, icon: o.icon, blurb: o.blurb, std: o.std, stdName: o.stdName,
+    lesson: [L3(`${o.icon} ${o.title}`, o.intro, o.introHtml || `<div class="v27-show">${o.icon}</div>`), L3("👀 Look and learn", o.learn, pics(...o.pics)), L3("💡 Pip's tip", o.trick, `<div class="v27-show sm">🦉💡</div>`)],
+    gen: () => { let r = Math.random() * tot; for (const [f, w] of mix) { r -= w; if (r <= 0) return f(); } return mix[0][0](); },
+  });
+}
+
+/* =================== SCIENCE · AGE 6 (Grade 1) =================== */
+{
+  const LIV = [["dog", "🐶", "l"], ["tree", "🌳", "l"], ["sunflower", "🌻", "l"], ["bird", "🐦", "l"], ["fish", "🐟", "l"], ["frog", "🐸", "l"], ["mushroom", "🍄", "l"], ["butterfly", "🦋", "l"], ["cow", "🐄", "l"], ["baby", "👶", "l"], ["cactus", "🌵", "l"], ["ant", "🐜", "l"], ["horse", "🐴", "l"],
+    ["ball", "⚽", "n"], ["toy car", "🚗", "n"], ["spoon", "🥄", "n"], ["book", "📕", "n"], ["teddy bear", "🧸", "n"], ["pencil", "✏️", "n"], ["shoe", "👟", "n"], ["clock", "⏰", "n"], ["key", "🔑", "n"], ["robot", "🤖", "n"], ["cloud", "☁️", "n"], ["balloon", "🎈", "n"], ["bike", "🚲", "n"]];
+  const LG = { l: ["a living thing", "living things", "Living"], n: ["a nonliving thing", "nonliving things", "Nonliving"] };
+  const LF = [
+    ["What do ALL living things need?", "Food, water and air", ["Toys and games", "A car and a road", "Music and books"], "Every living thing needs food (or a way to make food), water and air to stay alive.", "🍎💧🌬️", ["Toys are fun, but you don't need them to live.", "Plants and animals live without cars.", "Living things can live without music."]],
+    ["What can living things do that nonliving things can't?", "Grow and change", ["Be heavy", "Be colorful", "Roll down a hill"], "Living things grow, change, and make more of their kind.", "🌱➡️🌳", ["Rocks are heavy, and they are not alive.", "A crayon is colorful, but not alive.", "A ball can roll, but it is not alive."]],
+    ["A robot can move and beep. Is it living?", "No, it can't grow or eat", ["Yes, because it moves", "Yes, because it makes noise", "Yes, because it has lights"], "Moving isn't enough. Living things grow, eat and breathe. A robot doesn't.", "🤖", ["Wind moves leaves, but wind isn't alive.", "A drum makes noise, but it isn't alive.", "A lamp has a light, but it isn't alive."]],
+    ["A seed is planted and grows into a plant. What does that tell us?", "The seed is living", ["The seed is a rock", "The seed is a toy", "The seed is nonliving"], "Seeds are living. With water and warmth, they grow into new plants.", "🌱", ["Rocks never grow into plants.", "Toys don't grow.", "Nonliving things don't grow."]],
+  ];
+  V40_topic(6, "science", { id: "living", title: "Living or Nonliving?", icon: "🌱", blurb: "Is it alive? Sort living and nonliving things.", std: "1-LS1", stdName: "NGSS 1-LS1: structure, function and needs of living things",
+    intro: "Living things grow, change, and need food, water and air. Nonliving things don't grow or eat.", learn: "Dogs, trees and people are living. Balls, rocks and robots are nonliving.", pics: [["🐶", "Dog", "living"], ["🌳", "Tree", "living"], ["⚽", "Ball", "nonliving"], ["🤖", "Robot", "nonliving"]],
+    trick: "Ask: Does it grow? Does it need food, water and air? If yes, it's living!",
+    mix: [[() => V40_sort(LIV, LG, "s6l"), 3], [() => V40_fact(LF, "s6lf"), 1]] });
+
+  const BABY = [["dog", "🐶", "puppy", ""], ["cat", "🐱", "kitten", ""], ["cow", "🐄", "calf", ""], ["horse", "🐴", "foal", ""], ["sheep", "🐑", "lamb", ""], ["frog", "🐸", "tadpole", ""], ["chicken", "🐔", "chick", "🐥"], ["duck", "🦆", "duckling", ""], ["kangaroo", "🦘", "joey", ""], ["goat", "🐐", "kid", ""], ["bear", "🐻", "cub", ""]];
+  const HOME = [["bird", "🐦", "nest", ""], ["bee", "🐝", "hive", ""], ["spider", "🕷️", "web", "🕸️"], ["rabbit", "🐰", "burrow", ""], ["bear", "🐻", "den", ""], ["ant", "🐜", "anthill", ""], ["horse", "🐴", "stable", ""], ["fish", "🐟", "pond", ""], ["beaver", "🦫", "lodge", ""], ["dog", "🐶", "doghouse", ""]].filter(x => x[1] !== "🦫");
+  V40_topic(6, "science", { id: "animals", title: "Animal Babies & Homes", icon: "🐣", blurb: "Match animals to their babies and their homes.", std: "1-LS1", stdName: "NGSS 1-LS1 / 1-LS3: animals, their young and their needs",
+    intro: "Animals have babies that grow up to look like their parents. Animals also need a safe home.", learn: "A baby dog is a puppy. A bird lives in a nest. A bee lives in a hive.", pics: [["🐶", "Dog", "baby: puppy"], ["🐸", "Frog", "baby: tadpole"], ["🐦", "Bird", "home: nest"], ["🐝", "Bee", "home: hive"]],
+    trick: "Think about where you've seen the animal, and what its baby is called in stories.",
+    mix: [[() => V40_match(BABY, { ab: p => `What is a baby <b>${p[0]}</b> called?`, ba: p => `A <b>${p[2]}</b> is a baby what?`, why: p => `A baby ${p[0]} is called a ${p[2]}.`, whyB: x => `A ${x[2]} is a baby ${x[0]}.`, whyA: x => `A baby ${x[0]} is a ${x[2]}.` }, "s6ab"), 2], [() => V40_match(HOME, { ab: p => `Where does ${V40_an(`<b>${p[0]}</b>`).replace(/^an? (<b>)/, m => (/^an/.test(m) ? "an " : "a ") + "<b>")} live?`, ba: p => `Which animal lives in ${V40_an(p[2]).replace(p[2], `<b>${p[2]}</b>`)}?`, why: p => `${cap(V40_an(p[0]))} lives in ${V40_an(p[2])}.`, whyB: x => `${cap(V40_an(x[2]))} is a home for ${V40_an(x[0])}.`, whyA: x => `${cap(V40_an(x[0]))} lives in ${V40_an(x[2])}.` }, "s6ah"), 2]] });
+
+  const PARTS = [["roots", "", "take in water and hold the plant in the soil", ""], ["stem", "", "hold the plant up and carry water", ""], ["leaves", "🍃", "make food from sunlight", ""], ["flower", "🌸", "make seeds", ""], ["seeds", "", "grow into new plants", "🌱"], ["fruit", "🍎", "hold and protect the seeds", ""]];
+  const EAT = [["carrot", "🥕", "r", ""], ["celery", "", "s", ""], ["lettuce", "🥬", "l", ""], ["broccoli", "🥦", "f", ""], ["apple", "🍎", "fr", ""], ["peas", "", "sd", ""], ["potato", "🥔", "s2", ""], ["spinach", "", "l", ""], ["corn", "🌽", "sd", ""], ["beet", "", "r", ""], ["tomato", "🍅", "fr", ""]];
+  const EG = { r: ["a root", "roots", "Root"], s: ["a stem", "stems", "Stem"], s2: ["a stem part (a tuber)", "stems", "Stem"], l: ["a leaf", "leaves", "Leaf"], f: ["a flower", "flowers", "Flower"], fr: ["a fruit", "fruits", "Fruit"], sd: ["seeds we eat", "seeds we eat", "Seeds"] };
+  const PF = [
+    ["What do plants need to grow?", "Sunlight, water, air and soil", ["Candy and juice", "Darkness and ice", "Toys and music"], "Plants need sunlight, water, air and (usually) soil with nutrients.", "🌻☀️💧", ["Plants don't eat candy.", "Plants need light and warmth to grow.", "Plants don't need toys or music."]],
+    ["Which part of the plant is usually under the ground?", "The roots", ["The flower", "The leaves", "The fruit"], "Roots grow down into the soil to take in water.", "🌱", ["Flowers grow up in the air and light.", "Leaves reach up toward the sun.", "Fruit grows above the ground on most plants."]],
+    ["Why do leaves face the sun?", "To catch sunlight to make food", ["To stay cold", "To hide from birds", "To drink rain"], "Leaves use sunlight to make food for the plant.", "🍃☀️", ["Plants need warmth, not cold.", "Leaves turn toward light, not away from birds.", "Roots take in most of the water."]],
+  ];
+  V40_topic(6, "science", { id: "plants", title: "Plant Parts", icon: "🌻", blurb: "Roots, stems, leaves, flowers and seeds.", std: "1-LS1", stdName: "NGSS 1-LS1: plant parts and what they do",
+    intro: "Every part of a plant has a job. Roots drink, stems hold up, leaves make food, and flowers make seeds.", learn: "We even eat plant parts: carrots are roots and broccoli is flowers!", pics: [["🥕", "Carrot", "a root"], ["🥬", "Lettuce", "leaves"], ["🥦", "Broccoli", "flowers"], ["🍎", "Apple", "a fruit"]],
+    trick: "Think from the bottom up: roots in the soil, then the stem, leaves, flowers, and seeds.",
+    mix: [[() => V40_match(PARTS, { ab: p => `What is the job of the <b>${p[0]}</b>?`, ba: p => `Which plant part has this job: <b>${p[2]}</b>?`, why: p => `The job of the ${p[0]}: ${p[2]}.`, whyB: x => `That's the job of the ${x[0]}.`, whyA: x => `The job of the ${x[0]} is to ${x[2]}.` }, "s6pp"), 2.5], [() => V40_sort(EAT.filter(x => x[2] !== "s2"), { r: EG.r, s: EG.s, l: EG.l, f: EG.f, fr: EG.fr, sd: EG.sd }, "s6pe"), 1.5], [() => V40_fact(PF, "s6pf"), 1]] });
+
+  const WEAR = [["rainy day", "🌧️", "raincoat and boots", "☔"], ["snowy day", "❄️", "warm coat and mittens", "🧤"], ["hot, sunny day", "☀️", "sun hat and shorts", "🧢"], ["windy day", "🌬️", "a good day to fly a kite", ""], ["stormy day with lightning", "⛈️", "stay safe inside", "🏠"]];
+  const SEAS = [["the seasons", [["winter", "⛄"], ["spring", "🌷"], ["summer", "☀️"], ["fall", "🍂"]], 1]];
+  const SF = [
+    ["Leaves change color and fall off the trees. Which season is it?", "Fall", ["Spring", "Summer", "Winter"], "In fall, many leaves turn red, orange and yellow and drop.", "🍂", ["In spring, new leaves grow.", "In summer, leaves are green.", "In winter, many trees have no leaves left."]],
+    ["It is cold and snowy. Which season is it?", "Winter", ["Summer", "Spring", "Fall"], "Winter is the coldest season. In many places it snows.", "⛄", ["Summer is the hottest season.", "Spring is when it warms up and flowers bloom.", "Fall is when leaves drop and it cools down."]],
+    ["Flowers bloom and baby animals are born. Which season is it?", "Spring", ["Winter", "Fall", "Summer"], "In spring, it warms up, flowers bloom and many baby animals are born.", "🌷", ["Winter is cold, and few flowers bloom.", "In fall, plants get ready for winter.", "Summer comes after spring."]],
+    ["It is the hottest season, with long sunny days. Which season is it?", "Summer", ["Winter", "Spring", "Fall"], "Summer has the hottest weather and the longest days.", "☀️", ["Winter is the coldest.", "Spring is warm, but summer is hotter.", "Fall cools down."]],
+    ["What gives Earth light and heat?", "The sun", ["The moon", "The clouds", "A lamp"], "The sun is a star. It gives Earth light and heat.", "☀️", ["The moon shines because sunlight bounces off it.", "Clouds block the sun.", "A lamp only lights a room."]],
+    ["When can we usually see the stars?", "At night", ["At noon", "At lunch", "In the morning sun"], "Stars are always there, but we see them at night when the sky is dark.", "🌙⭐", ["At noon the sun is too bright.", "Lunch is in the daytime.", "The sun is too bright in the morning."]],
+  ];
+  V40_topic(6, "science", { id: "weather", title: "Weather, Sun & Seasons", icon: "⛅", blurb: "Weather words, what to wear, and the four seasons.", std: "1-ESS1", stdName: "NGSS 1-ESS1 / K-ESS2: patterns of the sun and seasons, weather",
+    intro: "Weather can be sunny, rainy, snowy or windy. The four seasons are winter, spring, summer and fall, and they come in the same order every year.", learn: "We dress for the weather: a raincoat for rain, mittens for snow, and a sun hat for hot days.", pics: [["☀️", "Sunny", "sun hat"], ["🌧️", "Rainy", "raincoat"], ["❄️", "Snowy", "mittens"], ["🍂", "Fall", "leaves drop"]],
+    trick: "Picture the day: Is it hot or cold? Wet or dry? What would you see outside?",
+    mix: [[() => V40_match(WEAR, { ab: p => `What is best for a <b>${p[0]}</b>?`, why: p => `On a ${p[0]}, choose: ${p[2]}.`, whyB: x => `That's for a ${x[0]}.` }, "s6ww"), 2], [() => V40_order(SEAS, "s6ws"), 1.5], [() => V40_fact(SF, "s6wf"), 2]] });
+
+  const SENSE = [["see a rainbow", "🌈", "eyes", "👀"], ["hear a bell", "🔔", "ears", "👂"], ["smell a flower", "🌸", "nose", "👃"], ["taste a lemon", "🍋", "tongue", "👅"], ["feel soft fur", "🐱", "hands (skin)", "✋"], ["read a book", "📖", "eyes", "👀"], ["hear a drum", "🥁", "ears", "👂"], ["smell cookies baking", "🍪", "nose", "👃"], ["taste sweet ice cream", "🍦", "tongue", "👅"], ["feel a hot cup", "☕", "hands (skin)", "✋"], ["watch fireworks", "🎆", "eyes", "👀"], ["hear a dog bark", "🐶", "ears", "👂"], ["smell smoke", "🔥", "nose", "👃"], ["taste salty pretzels", "🥨", "tongue", "👅"], ["feel cold ice", "🧊", "hands (skin)", "✋"]];
+  V40_topic(6, "science", { id: "senses", title: "My Five Senses", icon: "👀", blurb: "Seeing, hearing, smelling, tasting and touching.", std: "1-LS1", stdName: "NGSS 1-LS1-1 / K-LS1: using our senses to learn about the world",
+    intro: "We learn about the world with five senses: sight, hearing, smell, taste and touch.", learn: "Eyes see, ears hear, the nose smells, the tongue tastes, and skin feels.", pics: [["👀", "Eyes", "see"], ["👂", "Ears", "hear"], ["👃", "Nose", "smell"], ["👅", "Tongue", "taste"], ["✋", "Skin", "touch"]],
+    trick: "Act it out! Pretend to do it, and notice which body part you use.",
+    mix: [[() => V40_match(SENSE, { ab: p => `Which body part helps you <b>${p[0]}</b>?`, why: p => `You use your ${p[2]} to ${p[0]}.`, whyB: x => `You use your ${x[2]} to ${x[0]}.` }, "s6sn"), 1]] });
+}
+
+/* =================== SCIENCE · AGE 7 (Grade 2) =================== */
+{
+  const MAT = [["ice cube", "🧊", "s"], ["rock", "", "s"], ["book", "📕", "s"], ["spoon", "🥄", "s"], ["apple", "🍎", "s"], ["chair", "", "s"], ["coin", "", "s"], ["milk", "🥛", "l"], ["juice", "", "l"], ["water", "💧", "l"], ["rain", "🌧️", "l"], ["honey", "🍯", "l"], ["orange juice", "", "l"], ["steam", "", "g"], ["air in a balloon", "🎈", "g"], ["the air we breathe", "🌬️", "g"], ["bubbles' air", "🫧", "g"]].filter(x => x[1] !== "🫧");
+  const MG = { s: ["a solid", "solids", "Solid"], l: ["a liquid", "liquids", "Liquid"], g: ["a gas", "gases", "Gas"] };
+  const MF = [
+    ["What happens to ice when it gets warm?", "It melts into water", ["It turns into a rock", "It gets bigger and harder", "Nothing happens"], "Heat makes ice melt. The solid ice turns into liquid water.", "🧊➡️💧", ["Ice is frozen water, not rock.", "Warm ice melts and gets smaller.", "Heat changes ice."]],
+    ["What happens to water in a freezer?", "It freezes into ice", ["It turns into steam", "It turns into milk", "It disappears"], "When water gets very cold, it freezes into solid ice.", "💧➡️🧊", ["Steam comes from heating water, not cooling it.", "Water can't become milk.", "The water is still there, as ice."]],
+    ["A liquid takes the shape of…", "its container", ["a square always", "a ball always", "nothing at all"], "Liquids flow and take the shape of whatever holds them.", "🥛", ["Liquids don't keep their own shape.", "Liquids spread out to fit the container.", "Liquids always fill the bottom of their container."]],
+    ["Which keeps its own shape?", "A solid", ["A liquid", "A gas", "Steam"], "Solids, like a block, keep their shape.", "🧱", ["Liquids take the shape of their container.", "Gases spread out to fill any space.", "Steam is a gas, so it spreads out."]],
+    ["Water boils in a pot. What rises up?", "Steam (water as a gas)", ["Ice", "Sand", "Milk"], "Heating water turns some of it into steam, a gas.", "♨️", ["Ice comes from cold, not heat.", "Sand doesn't come from water.", "Water can't turn into milk."]],
+  ];
+  V40_topic(7, "science", { id: "matter", title: "Solids, Liquids & Gases", icon: "🧊", blurb: "Sort matter and see how heating and cooling change it.", std: "2-PS1", stdName: "NGSS 2-PS1: structure and properties of matter",
+    intro: "Everything around us is matter. Solids keep their shape, liquids flow and take the shape of their container, and gases spread out to fill a space.", learn: "Heating and cooling can change matter: ice melts into water, and water freezes into ice.", pics: [["🧊", "Ice", "solid"], ["🥛", "Milk", "liquid"], ["🎈", "Air", "gas"], ["♨️", "Steam", "gas"]],
+    trick: "Ask: Does it keep its shape (solid), pour (liquid), or float and spread everywhere (gas)?",
+    mix: [[() => V40_sort(MAT, MG, "s7m"), 3], [() => V40_fact(MF, "s7mf"), 2]] });
+
+  const HAB = [["camel", "🐫", "desert", "🏜️"], ["cactus", "🌵", "desert", "🏜️"], ["whale", "🐋", "ocean", "🌊"], ["octopus", "🐙", "ocean", "🌊"], ["shark", "🦈", "ocean", "🌊"], ["polar bear", "🐻‍❄️", "icy Arctic", "🧊"], ["deer", "🦌", "forest", "🌲"], ["owl", "🦉", "forest", "🌲"], ["monkey", "🐒", "rainforest", "🌴"], ["parrot", "🦜", "rainforest", "🌴"], ["zebra", "🦓", "grassland", "🌾"], ["lion", "🦁", "grassland", "🌾"], ["scorpion", "🦂", "desert", "🏜️"], ["crab", "🦀", "ocean", "🌊"]].filter(x => x[1] !== "🐻‍❄️");
+  const HF = [
+    ["Why does a camel do well in the desert?", "It can go a long time without water", ["It loves snow", "It swims fast", "It lives in trees"], "Camels can go many days without drinking, so they do well in hot, dry deserts.", "🐫", ["Deserts are hot and dry, not snowy.", "There's little water to swim in.", "Few trees grow in the desert."]],
+    ["Why do polar bears have thick fur?", "To stay warm in the icy cold", ["To climb trees", "To stay cool in the desert", "To swim in warm water"], "Thick fur and fat keep polar bears warm in the icy Arctic.", "🧊", ["Thick fur isn't for climbing.", "Thick fur would make them too hot in the desert.", "Arctic water is freezing cold."]],
+    ["A habitat is…", "the place where a plant or animal lives", ["a kind of food", "a type of weather", "an animal's name"], "A habitat gives a living thing food, water and shelter.", "🏡", ["Food is part of a habitat, but not all of it.", "Weather is part of a habitat, but not all of it.", "A habitat is a place, not a name."]],
+  ];
+  V40_topic(7, "science", { id: "habitats", title: "Animal Habitats", icon: "🏜️", blurb: "Deserts, oceans, forests, rainforests and grasslands.", std: "2-LS4", stdName: "NGSS 2-LS4: biodiversity and habitats",
+    intro: "A habitat is the home where a plant or animal lives. It gives them food, water and shelter.", learn: "Camels live in the desert, whales in the ocean, owls in the forest, and monkeys in the rainforest.", pics: [["🏜️", "Desert", "hot and dry"], ["🌊", "Ocean", "salty water"], ["🌲", "Forest", "many trees"], ["🌴", "Rainforest", "warm and wet"]],
+    trick: "Think about what the animal needs: water or dry land? Hot or cold? Trees or grass?",
+    mix: [[() => V40_match(HAB, { ab: p => `Where does a <b>${p[0]}</b> live?`, ba: p => `Which one lives in the <b>${p[2]}</b>?`, why: p => `A ${p[0]} lives in the ${p[2]}.`, whyB: x => `The ${x[2]} is home to animals like the ${x[0]}, but not this one.`, whyA: x => `A ${x[0]} lives in the ${x[2]}.` }, "s7h"), 3], [() => V40_fact(HF, "s7hf"), 1.5]] });
+
+  const CYC = [
+    ["a butterfly's life", [["egg", "🥚"], ["caterpillar", "🐛"], ["chrysalis", ""], ["butterfly", "🦋"]], 1],
+    ["a frog's life", [["egg", "🥚"], ["tadpole", ""], ["froglet", ""], ["frog", "🐸"]], 1],
+    ["a plant's life", [["seed", ""], ["sprout", "🌱"], ["plant", "🌿"], ["flower", "🌸"]], 1],
+    ["a chicken's life", [["egg", "🥚"], ["chick", "🐥"], ["young chicken", ""], ["hen", "🐔"]], 1],
+  ];
+  const CF = [
+    ["A caterpillar makes a chrysalis. What comes out?", "A butterfly", ["A frog", "A bird", "A bee"], "Inside the chrysalis, the caterpillar changes into a butterfly.", "🦋", ["Frogs come from tadpoles.", "Birds hatch from eggs.", "Bees come from bee larvae in a hive."]],
+    ["What does a tadpole grow into?", "A frog", ["A fish", "A butterfly", "A turtle"], "A tadpole grows legs, loses its tail, and becomes a frog.", "🐸", ["Tadpoles look a bit like fish, but they become frogs.", "Butterflies come from caterpillars.", "Turtles hatch from eggs as tiny turtles."]],
+    ["What does a seed need to sprout?", "Water and warmth", ["Ice and darkness forever", "Salt", "Paint"], "With water and warmth, a seed sprouts and starts to grow.", "🌱", ["Ice keeps seeds from sprouting.", "Salt can hurt plants.", "Paint doesn't help a seed grow."]],
+  ];
+  V40_topic(7, "science", { id: "lifecycles", title: "Life Cycles", icon: "🐛", blurb: "How butterflies, frogs, plants and chickens grow.", std: "3-LS1", stdName: "NGSS 3-LS1 (early): life cycles",
+    intro: "A life cycle is how a living thing is born, grows up, and makes new living things. Then the cycle starts again.", learn: "Butterfly: egg → caterpillar → chrysalis → butterfly. Frog: egg → tadpole → froglet → frog.", pics: [["🥚", "Egg", "step 1"], ["🐛", "Caterpillar", "step 2"], ["🦋", "Butterfly", "grown up"], ["🐸", "Frog", "from a tadpole"]],
+    trick: "Start small and get bigger: egg or seed first, the grown-up last.",
+    mix: [[() => V40_order(CYC, "s7c"), 3], [() => V40_fact(CF, "s7cf"), 1.5]] });
+
+  const SEED = [
+    ["How does a dandelion spread its seeds?", "The wind blows them", ["A dog eats them", "They roll like balls", "They swim away"], "Dandelion seeds are light and fluffy, so the wind carries them far.", "🌬️", ["Dandelion seeds float on the wind instead.", "They are too light and fluffy to roll.", "Dandelions don't grow in water."]],
+    ["Burrs stick to a dog's fur. How does this help the plant?", "The dog carries the seeds to new places", ["It keeps the dog warm", "It feeds the dog", "It makes the dog fast"], "Sticky burrs ride on animals and drop off far away, where new plants can grow.", "🐕", ["Burrs don't warm a dog.", "Dogs don't eat burrs.", "Burrs don't make dogs faster."]],
+    ["How do bees help flowers?", "They carry pollen from flower to flower", ["They paint the petals", "They water the roots", "They eat the stems"], "Pollen sticks to bees. When bees visit other flowers, the pollen helps make seeds.", "🐝", ["Flowers are already colorful.", "Rain and people water roots.", "Bees drink nectar, not stems."]],
+    ["A coconut floats in the ocean to a new beach. What carried the seed?", "Water", ["Wind", "A dog", "A car"], "Coconuts can float, so ocean water carries them to new places.", "🥥", ["Coconuts are too heavy for wind.", "Dogs don't carry coconuts across the sea.", "No car was needed."]],
+    ["A squirrel buries an acorn and forgets it. What can happen?", "A new oak tree can grow", ["The acorn turns into a rock", "The squirrel turns into a tree", "Nothing can ever grow"], "Forgotten acorns can sprout into new oak trees.", "🐿️", ["Acorns are seeds, not rocks.", "Animals don't turn into trees.", "Acorns are seeds and can grow."]],
+    ["Why do many fruits taste sweet?", "Animals eat them and spread the seeds", ["So people can paint with them", "To keep rain away", "To scare birds"], "Animals eat sweet fruit, then drop the seeds in new places.", "🍓", ["Fruit isn't made for painting.", "Sweetness doesn't stop rain.", "Sweet fruit attracts birds."]],
+  ];
+  SEED.push(
+
+  ["Why do many flowers have bright colors and sweet smells?", "To attract bees and other pollinators", ["To scare animals away", "To keep the flower warm", "To make it rain"], "Bright colors and sweet smells invite bees, butterflies and birds to visit.", "🌸", ["Flowers want animals to visit, not leave.", "Colors and smells don't keep flowers warm.", "Flowers can't make rain."]],
+  ["Which animal also helps pollinate flowers?", "A hummingbird", ["A shark", "A worm", "A crab"], "Hummingbirds drink nectar and carry pollen from flower to flower.", "🐦", ["Sharks live in the ocean, far from flowers.", "Worms live in the soil.", "Crabs live near water, not on flowers."]],
+  ["What powdery stuff do bees carry from flower to flower?", "Pollen", ["Sand", "Salt", "Sugar cubes"], "Pollen sticks to bees and helps flowers make seeds.", "🐝", ["Sand doesn't help flowers make seeds.", "Salt isn't made by flowers.", "Bees carry nectar and pollen, not sugar cubes."]],
+  ["A maple seed spins like a little helicopter. What carries it?", "The wind", ["Water", "A bee", "A worm"], "Maple seeds have wings that catch the wind.", "🍁", ["Maple seeds are made to fly, not float.", "Bees carry pollen, not maple seeds.", "Worms don't carry seeds far."]],
+  ["Birds eat berries and drop the seeds far away. How does this help the plant?", "New plants can grow in new places", ["The bird gets lost", "The berries get bigger", "The plant stops growing"], "Animals that eat fruit spread the seeds to new places.", "🫐".replace("🫐", "🐦"), ["The bird knows its way.", "Eating berries doesn't make them bigger.", "Spreading seeds helps more plants grow."]],
+  ["What would happen to many fruits if there were no bees?", "Fewer of them would grow", ["More of them would grow", "They would grow faster", "Nothing would change"], "Many fruits need pollinators like bees to grow.", "🍎", ["Without pollinators, fewer fruits form.", "Bees don't slow fruit down; they help it form.", "Bees are very important for fruit."]],
+  ["Which seed is carried by water?", "A coconut", ["A dandelion seed", "A burr", "A maple seed"], "Coconuts float, so water can carry them to new beaches.", "🥥", ["Dandelion seeds fly on the wind.", "Burrs stick to animal fur.", "Maple seeds spin on the wind."]],
+  ["Which seed is carried on animal fur?", "A burr", ["A coconut", "A dandelion seed", "A maple seed"], "Burrs have tiny hooks that grab onto fur.", "🐕", ["Coconuts float on water.", "Dandelion seeds fly on the wind.", "Maple seeds spin on the wind."]],
+  );
+  V40_topic(7, "science", { id: "seeds", title: "Seeds & Pollination", icon: "🐝", blurb: "How animals, wind and water help plants.", std: "2-LS2", stdName: "NGSS 2-LS2: plants depend on animals for pollination and spreading seeds",
+    intro: "Plants can't walk, so they get help! Bees carry pollen between flowers, and wind, water and animals carry seeds to new places.", learn: "Fluffy seeds fly on the wind, sticky burrs ride on fur, and coconuts float on water.", pics: [["🐝", "Bee", "carries pollen"], ["🌬️", "Wind", "carries fluffy seeds"], ["🐕", "Animal fur", "carries burrs"], ["🥥", "Water", "carries coconuts"]],
+    trick: "Look at the seed: fluffy means wind, sticky means animals, floaty means water.",
+    mix: [[() => V40_fact(SEED, "s7s"), 1]] });
+
+  const MAGNET = [["paper clip", "📎", "y"], ["iron nail", "", "y"], ["steel safety pin", "", "y"], ["steel screw", "", "y"], ["fridge door", "", "y"], ["wooden block", "", "n"], ["plastic cup", "", "n"], ["rubber band", "", "n"], ["paper", "📄", "n"], ["glass marble", "", "n"], ["penny", "", "n"], ["pencil", "✏️", "n"], ["cotton ball", "", "n"], ["aluminum foil", "", "n"]];
+  const MAGG = { y: ["pulled by a magnet", "things a magnet pulls", "Magnetic"], n: ["not pulled by a magnet", "things a magnet doesn't pull", "Not magnetic"] };
+  const PP = [["opening a drawer", "", "pull"], ["kicking a ball", "⚽", "push"], ["pulling a wagon", "", "pull"], ["pushing a swing", "", "push"], ["tug-of-war", "", "pull"], ["pressing a button", "", "push"], ["pulling a sock on", "🧦", "pull"], ["rolling a bowling ball", "🎳", "push"], ["picking an apple off a tree", "🍎", "pull"]];
+  const PPG = { push: ["a push", "pushes", "Push"], pull: ["a pull", "pulls", "Pull"] };
+  V40_topic(7, "science", { id: "magnets", title: "Pushes, Pulls & Magnets", icon: "🧲", blurb: "Forces that move things, and what magnets pull.", std: "3-PS2", stdName: "NGSS K-PS2 / 3-PS2 (early): pushes, pulls and magnets",
+    intro: "A push moves something away from you. A pull moves it toward you. Magnets pull on things made of iron or steel.", learn: "Paper clips and nails stick to magnets. Wood, plastic, paper and pennies don't.", pics: [["📎", "Paper clip", "magnetic"], ["📄", "Paper", "not magnetic"], ["⚽", "Kick", "a push"], ["🧦", "Pull a sock", "a pull"]],
+    trick: "Push = away from you. Pull = toward you. Magnets pull iron and steel.",
+    mix: [[() => V40_sort(MAGNET, MAGG, "s7mg"), 2], [() => V40_sort(PP, PPG, "s7pp"), 2]] });
+}
+
+/* =================== SCIENCE · AGE 8 (Grade 3) =================== */
+{
+  const EATS = [["rabbit", "🐰", "h"], ["cow", "🐄", "h"], ["deer", "🦌", "h"], ["giraffe", "🦒", "h"], ["horse", "🐴", "h"], ["koala", "🐨", "h"], ["lion", "🦁", "c"], ["shark", "🦈", "c"], ["wolf", "🐺", "c"], ["eagle", "🦅", "c"], ["snake", "🐍", "c"], ["tiger", "🐯", "c"], ["bear", "🐻", "o"], ["raccoon", "", "o"], ["pig", "🐷", "o"], ["chicken", "🐔", "o"], ["human", "🧑", "o"]];
+  const EG = { h: ["a herbivore (plant eater)", "herbivores", "Herbivore"], c: ["a carnivore (meat eater)", "carnivores", "Carnivore"], o: ["an omnivore (eats plants and animals)", "omnivores", "Omnivore"] };
+  const CH = [["a meadow food chain", [["sun", "☀️"], ["grass", "🌾"], ["grasshopper", "🦗"], ["frog", "🐸"], ["snake", "🐍"]]], ["an ocean food chain", [["sun", "☀️"], ["algae", ""], ["small fish", "🐟"], ["big fish", "🐠"], ["shark", "🦈"]]], ["a forest food chain", [["sun", "☀️"], ["acorn", ""], ["mouse", "🐭"], ["owl", "🦉"]]]];
+  const FF = [
+    ["In a food chain, what are plants called?", "Producers", ["Consumers", "Decomposers", "Predators"], "Plants are producers: they make their own food from sunlight.", "🌿", ["Consumers eat other living things.", "Decomposers break down dead things.", "Predators hunt other animals."]],
+    ["Where does the energy in every food chain start?", "The sun", ["The soil", "The water", "The biggest animal"], "Plants use sunlight to make food, so energy starts with the sun.", "☀️", ["Soil helps plants, but the energy comes from sunlight.", "Water is needed, but it isn't the energy source.", "The biggest animal is at the end of the chain."]],
+    ["Worms and mushrooms break down dead leaves. What are they called?", "Decomposers", ["Producers", "Herbivores", "Predators"], "Decomposers break dead things into soil nutrients that plants can use.", "🍄", ["Producers make food from sunlight.", "Herbivores eat living plants.", "Predators hunt live animals."]],
+    ["A hawk eats a mouse. The hawk is the…", "predator", ["prey", "producer", "decomposer"], "The predator hunts. The mouse is the prey.", "🦅", ["The prey is the animal that gets eaten.", "Producers are plants.", "Decomposers break down dead things."]],
+  ];
+  V40_topic(8, "science", { id: "foodchains", title: "Food Chains", icon: "🦊", blurb: "Producers, consumers, and who eats what.", std: "3-LS2", stdName: "NGSS 3-LS2 / 5-LS2 (early): food chains and ecosystems",
+    intro: "A food chain shows how energy moves: the sun → plants → animals that eat plants → animals that eat animals.", learn: "Herbivores eat plants, carnivores eat meat, and omnivores eat both.", pics: [["☀️", "Sun", "energy"], ["🌾", "Grass", "producer"], ["🐰", "Rabbit", "herbivore"], ["🦊", "Fox", "carnivore"]],
+    trick: "Follow the arrows: they point from the food to the eater.",
+    mix: [[() => V40_sort(EATS, EG, "s8e"), 2.5], [() => V40_order(CH, "s8c"), 1.5], [() => V40_fact(FF, "s8f"), 1.5]] });
+
+  const TOOLS = [["thermometer", "🌡️", "how hot or cold it is", ""], ["rain gauge", "", "how much rain fell", "🌧️"], ["wind vane", "", "which way the wind blows", "🧭"], ["anemometer", "", "how fast the wind blows", "🌬️"], ["barometer", "", "air pressure (to forecast weather)", ""]];
+  const WF = [
+    ["Weather is what the air is like today. Climate is…", "the usual weather of a place over many years", ["tomorrow's weather", "the temperature right now", "only the rain"], "Climate is the pattern of weather in a place over many years.", "🌍", ["That's a weather forecast.", "That's today's weather.", "Climate includes temperature, rain and more."]],
+    ["Which place has a hot, dry climate?", "A desert", ["The North Pole", "A rainforest", "A snowy mountaintop"], "Deserts get very little rain and are often hot.", "🏜️", ["The North Pole is very cold.", "Rainforests are hot and very wet.", "Mountaintops are often cold and snowy."]],
+    ["A storm with strong spinning winds that forms over warm ocean water is a…", "hurricane", ["drought", "blizzard", "rainbow"], "Hurricanes form over warm oceans and bring strong winds and heavy rain.", "🌀", ["A drought is a long time without rain.", "A blizzard is a heavy snowstorm.", "A rainbow is light, not a storm."]],
+    ["What should you do if you hear thunder while playing outside?", "Go inside a building right away", ["Stand under a tall tree", "Stay in the pool", "Fly a kite"], "When thunder roars, go indoors. Lightning can strike nearby.", "⛈️", ["Tall trees can attract lightning.", "Water is dangerous in a lightning storm.", "Kites can attract lightning."]],
+  ];
+  V40_topic(8, "science", { id: "weathertools", title: "Weather Tools & Climate", icon: "🌡️", blurb: "Measure the weather and learn about climates.", std: "3-ESS2", stdName: "NGSS 3-ESS2 / 3-ESS3: weather, climate and weather hazards",
+    intro: "Scientists measure weather with tools. Climate is the usual weather of a place over many years.", learn: "A thermometer measures temperature, a rain gauge measures rain, and a wind vane shows wind direction.", pics: [["🌡️", "Thermometer", "temperature"], ["🌧️", "Rain gauge", "rain"], ["🧭", "Wind vane", "direction"], ["🌬️", "Anemometer", "wind speed"]],
+    trick: "Match the tool to its word: thermo = heat, rain gauge = rain, wind vane = which way.",
+    mix: [[() => V40_match(TOOLS, { ab: p => `What does a <b>${p[0]}</b> measure?`, ba: p => `Which tool measures <b>${p[2]}</b>?`, why: p => `A ${p[0]} measures ${p[2]}.`, whyB: x => `That's what a ${x[0]} measures.`, whyA: x => `A ${x[0]} measures ${x[2]}.` }, "s8t"), 2], [() => V40_fact(WF, "s8w"), 2]] });
+
+  const FOR = [
+    ["What pulls everything down toward Earth?", "Gravity", ["Friction", "Magnetism", "Wind"], "Gravity pulls objects toward the ground. That's why a dropped ball falls.", "🍎⬇️", ["Friction slows things down when they rub.", "Magnets pull only some metals.", "Wind pushes things sideways, not always down."]],
+    ["A ball rolling on grass slows down and stops. What slowed it?", "Friction", ["Gravity", "Magnetism", "Light"], "Friction is a force that happens when things rub. It slows motion.", "⚽", ["Gravity pulls down; friction slows rolling.", "Grass isn't a magnet.", "Light doesn't slow balls."]],
+    ["Two kids push a box with the same strength from opposite sides. What happens?", "The box doesn't move (balanced forces)", ["The box flies away", "The box moves fast", "The box gets heavier"], "Equal pushes from opposite sides cancel out. The forces are balanced.", "📦", ["Balanced forces don't make things fly.", "It moves only if one push is stronger.", "Pushing doesn't change weight."]],
+    ["Two magnets with their north ends facing each other will…", "push apart (repel)", ["stick together", "melt", "change color"], "Same poles repel. Opposite poles (north and south) attract.", "🧲", ["Opposite poles stick together, not the same poles.", "Magnets don't melt from facing each other.", "Magnets don't change color."]],
+    ["Which surface has the MOST friction for a toy car?", "A carpet", ["Ice", "A smooth floor", "Glass"], "Rough surfaces like carpet have more friction, so the car slows quickly.", "🚗", ["Ice is slippery, with little friction.", "Smooth floors have less friction than carpet.", "Glass is smooth, with little friction."]],
+    ["To make a swing go higher, you need…", "a bigger push", ["a smaller push", "no push", "a heavier swing seat"], "A stronger force causes a bigger change in motion.", "🎠", ["A smaller push makes it go less high.", "With no push, it slows down and stops.", "A heavier seat is harder to push."]],
+  ];
+  FOR.push(
+
+  ["You throw a ball up. Why does it come back down?", "Gravity pulls it down", ["Friction pushes it down", "Magnets pull it down", "Light pushes it down"], "Gravity pulls everything toward Earth.", "⚾", ["Friction slows things; it doesn't pull them down.", "A ball isn't pulled by magnets.", "Light doesn't push balls down."]],
+  ["Which needs the biggest push to move?", "A heavy box of books", ["An empty box", "A feather", "A paper cup"], "Heavier objects need a stronger force to move.", "📦", ["An empty box is light and easy to push.", "A feather needs only a tiny push.", "A paper cup is very light."]],
+  ["A north end and a south end of two magnets will…", "pull together (attract)", ["push apart (repel)", "melt", "change color"], "Opposite poles attract. Same poles repel.", "🧲", ["Same poles push apart; these are opposite.", "Magnets don't melt from this.", "Magnets don't change color."]],
+  ["Why do people put sand on icy sidewalks?", "To add friction so people don't slip", ["To make the ice shinier", "To make it more slippery", "To make the ice thicker"], "Sand is rough, so it adds friction and helps shoes grip.", "🧊", ["Shiny ice is still slippery.", "Sand does the opposite: it adds grip.", "Sand doesn't make ice thicker."]],
+  ["A ball rolls toward you and you kick it back. What happens to the ball?", "It changes direction", ["It keeps going the same way", "Nothing happens", "It turns into a magnet"], "A push can change the direction an object moves.", "⚽", ["Your kick pushes it the other way.", "A kick is a force, so something changes.", "Kicking doesn't make magnets."]],
+  ["A toy car rolls down a steeper ramp. What happens?", "It goes faster", ["It goes slower", "It doesn't move", "It floats up"], "On a steeper ramp, gravity pulls the car down faster.", "🚗", ["Steeper ramps make cars go faster, not slower.", "Gravity makes it roll.", "Gravity pulls down, not up."]],
+  ["Magnets can pull some objects…", "even without touching them", ["only by touching them", "only if they are wood", "only underwater"], "A magnet's pull reaches through the air.", "🧲", ["Magnets can pull from a distance.", "Magnets don't pull wood.", "Magnets work in air too."]],
+  ["Which one is NOT a force?", "A color", ["Gravity", "Friction", "A push"], "Forces are pushes and pulls. Color is not a force.", "🎨", ["Gravity is a force: it pulls things down.", "Friction is a force: it slows things.", "A push is a force."]],
+  );
+  V40_topic(8, "science", { id: "forces", title: "Forces & Motion", icon: "🎢", blurb: "Gravity, friction, balanced forces and magnets.", std: "3-PS2", stdName: "NGSS 3-PS2: forces and interactions",
+    intro: "A force is a push or a pull. Gravity pulls things down, friction slows things, and magnets attract or repel.", learn: "Balanced forces keep things still. Unbalanced forces make things start, stop or change direction.", pics: [["🍎", "Gravity", "pulls down"], ["⚽", "Friction", "slows down"], ["🧲", "Magnets", "attract or repel"], ["📦", "Balanced", "no movement"]],
+    trick: "Ask: what is pushing or pulling, and which side is stronger?",
+    mix: [[() => V40_fact(FOR, "s8fo"), 1]] });
+
+  const TRAIT = [["eye color", "👁️", "i"], ["hair color", "", "i"], ["a puppy's spots", "🐶", "i"], ["a flower's color", "🌷", "i"], ["freckles", "", "i"], ["a cat's fur color", "🐱", "i"], ["riding a bike", "🚲", "l"], ["reading", "📖", "l"], ["speaking Spanish", "", "l"], ["a dog doing tricks", "🐕", "l"], ["playing piano", "🎹", "l"], ["swimming", "🏊", "l"], ["tying shoes", "👟", "l"]];
+  const TG = { i: ["an inherited trait (from parents)", "inherited traits", "Inherited"], l: ["a learned skill", "learned skills", "Learned"] };
+  const TF = [
+    ["Why do puppies often look like their parents?", "They inherit traits from their parents", ["They copy their parents", "They eat the same food", "They live in the same house"], "Parents pass traits like fur color to their babies.", "🐶", ["Copying teaches skills, not fur color.", "Food doesn't decide fur color.", "Where they live doesn't decide how they look."]],
+    ["A plant grows tall in sunlight but short in a dark closet. This shows…", "the environment can change traits", ["plants don't need light", "seeds are not alive", "all plants are the same"], "Traits come from parents, but the environment (like light) can change them too.", "🌱", ["The short plant shows it needs light.", "Seeds are living.", "Plants vary a lot."]],
+  ];
+  V40_topic(8, "science", { id: "traits", title: "Inherited & Learned", icon: "🧬", blurb: "What comes from parents, and what we learn.", std: "3-LS3", stdName: "NGSS 3-LS3: inheritance and variation of traits",
+    intro: "Some traits are inherited: they come from your parents, like eye color. Other things are learned, like reading or riding a bike.", learn: "Puppies get their spots from their parents. A dog learns tricks from training.", pics: [["👁️", "Eye color", "inherited"], ["🐶", "Puppy spots", "inherited"], ["📖", "Reading", "learned"], ["🚲", "Biking", "learned"]],
+    trick: "Ask: Were you born with it (inherited), or did you practice it (learned)?",
+    mix: [[() => V40_sort(TRAIT, TG, "s8tr"), 3], [() => V40_fact(TF, "s8tf"), 1]] });
+
+  const FOS = [
+    ["What is a fossil?", "Remains or traces of a living thing from long ago, kept in rock", ["A shiny new rock", "A kind of plant alive today", "A toy dinosaur"], "Fossils are bones, shells, footprints or prints of plants and animals from long ago, saved in rock.", "🦴", ["Fossils are very old, not new.", "Fossils are from things that lived long ago.", "Toys aren't fossils."]],
+    ["Fish fossils are found high on a mountain. What does this tell us?", "Water once covered that land", ["Fish can climb mountains", "Fish live on mountains now", "Someone carried them there"], "Fossils show what a place was like long ago. Ocean fossils mean water was there.", "🐟⛰️", ["Fish can't climb mountains.", "Fish need water to live.", "Fossils formed in the rock over a very long time."]],
+    ["An animal that no longer lives anywhere on Earth is…", "extinct", ["endangered", "hibernating", "migrating"], "Extinct means there are none left alive, like dinosaurs.", "🦖", ["Endangered means only a few are left.", "Hibernating means sleeping through winter.", "Migrating means traveling to a new place."]],
+    ["A cactus has thick stems that store water. This helps it…", "live in a dry desert", ["live in the ocean", "stay cold", "grow under snow"], "Storing water is an adaptation for dry places.", "🌵", ["Ocean plants don't need to store water.", "Thick stems store water, not cold.", "Cactuses grow in warm, dry places."]],
+    ["A white snowshoe hare blends in with the snow. This is called…", "camouflage", ["hibernation", "migration", "pollination"], "Camouflage helps animals hide from predators.", "🐇❄️", ["Hibernation is a long winter sleep.", "Migration is traveling to another place.", "Pollination is how flowers make seeds."]],
+    ["Why do birds fly south for the winter?", "To find warmer weather and food", ["To get a tan", "To look for snow", "Because they're lost"], "Many birds migrate to warmer places where they can find food.", "🐦", ["Birds don't tan.", "They leave to escape cold and snow.", "Migration is a planned trip, not getting lost."]],
+  ];
+  FOS.push(
+
+  ["Which one can become a fossil?", "A dinosaur bone", ["A plastic toy", "A cloud", "A rainbow"], "Bones, shells and footprints from long ago can become fossils.", "🦴", ["Toys aren't remains of living things.", "Clouds aren't living things.", "Rainbows are light, not living things."]],
+  ["Scientists who study fossils are called…", "paleontologists", ["astronauts", "chefs", "pilots"], "Paleontologists dig up and study fossils.", "🔍", ["Astronauts travel to space.", "Chefs cook food.", "Pilots fly planes."]],
+  ["A fossil of a palm leaf is found in a very cold place. What does it tell us?", "Long ago, that place was warmer", ["Palm trees love snow", "Someone painted it there", "Places never change"], "Palm trees grow in warm places, so that land was once warmer.", "🌴", ["Palm trees need warm weather.", "Fossils form naturally in rock.", "The fossil shows that places do change."]],
+  ["Why do some animals hibernate in winter?", "To save energy when food is hard to find", ["Because they're bored", "To grow wings", "To find a new home"], "Hibernating animals sleep deeply and use very little energy.", "🐻", ["Hibernation isn't about boredom.", "Animals don't grow wings by sleeping.", "Moving to a new home is migration."]],
+  ["A chameleon can change color to match its surroundings. This helps it…", "hide from predators", ["fly", "breathe underwater", "grow bigger"], "Blending in is camouflage. It helps animals hide.", "🦎", ["Chameleons can't fly.", "Chameleons breathe air.", "Changing color doesn't make it bigger."]],
+  ["Why do ducks have waterproof feathers?", "To stay dry and warm in water", ["To dig tunnels", "To climb trees", "To scare fish"], "Oily feathers keep water out, so ducks stay warm.", "🦆", ["Ducks don't dig tunnels.", "Feathers aren't for climbing.", "Feathers aren't for scaring fish."]],
+  ["What happened to most dinosaurs?", "They became extinct long ago", ["They still live in parks", "They turned into mountains", "They are hiding in caves"], "Most dinosaurs died out about 66 million years ago. We learn about them from fossils.", "🦖", ["No dinosaurs like T. rex live today.", "Mountains are made of rock, not dinosaurs.", "Scientists know they died out long ago."]],
+  ["Thick fur and a layer of fat help a polar bear…", "stay warm in the cold", ["stay cool in the desert", "climb tall trees", "fly south"], "Fur and fat are adaptations for icy places.", "🧊", ["Polar bears live in the icy Arctic.", "Polar bears don't climb tall trees.", "Polar bears can't fly."]],
+  );
+  V40_topic(8, "science", { id: "fossils", title: "Fossils & Adaptations", icon: "🦕", blurb: "Clues from long ago and how living things survive.", std: "3-LS4", stdName: "NGSS 3-LS4: fossils, environments and survival",
+    intro: "Fossils are clues in rocks from plants and animals of long ago. Adaptations are body parts or behaviors that help living things survive.", learn: "Camouflage helps animals hide. Thick fur keeps them warm. Some birds migrate to warmer places.", pics: [["🦴", "Fossil", "clue from long ago"], ["🦖", "Dinosaur", "extinct"], ["🌵", "Cactus", "stores water"], ["🐇", "Hare", "camouflage"]],
+    trick: "Ask: How does this help the animal or plant stay alive where it lives?",
+    mix: [[() => V40_fact(FOS, "s8fs"), 1]] });
+}
+
+/* =================== SCIENCE · AGE 9 (Grade 4) =================== */
+{
+  const COND = [["metal spoon", "🥄", "c"], ["copper wire", "", "c"], ["iron nail", "", "c"], ["aluminum foil", "", "c"], ["steel key", "🔑", "c"], ["wooden spoon", "", "i"], ["rubber gloves", "", "i"], ["plastic ruler", "📏", "i"], ["glass cup", "", "i"], ["wool mitten", "🧤", "i"], ["paper", "📄", "i"], ["cork", "", "i"]];
+  const CG = { c: ["a conductor (lets heat and electricity pass easily)", "conductors", "Conductor"], i: ["an insulator (blocks heat and electricity)", "insulators", "Insulator"] };
+  const EF = [["light energy", "💡", "a flashlight beam", ""], ["sound energy", "🔊", "a ringing bell", "🔔"], ["heat energy", "🔥", "a campfire", ""], ["motion energy", "🏃", "a rolling ball", "⚽"], ["electrical energy", "⚡", "a charged battery powering a toy", "🔋"]];
+  const ENF = [
+    ["What happens to energy when a bike's brakes rub the wheel?", "Motion energy changes to heat", ["Energy disappears forever", "It turns into light only", "It makes the bike go faster"], "Energy changes form. Rubbing (friction) turns motion into heat.", "🚲", ["Energy is never destroyed; it changes form.", "Brakes make mostly heat, not light.", "Brakes slow the bike down."]],
+    ["A faster-moving ball has…", "more energy", ["less energy", "no energy", "the same energy as a still ball"], "The faster something moves, the more motion energy it has.", "⚽", ["Slow things have less energy.", "Moving things always have energy.", "A still ball has no motion energy."]],
+    ["Which part of a circuit gives the electrical energy?", "The battery", ["The wire's plastic cover", "The switch", "The light bulb"], "The battery stores energy and pushes electricity around the circuit.", "🔋", ["The plastic cover is an insulator.", "The switch only opens or closes the path.", "The bulb uses energy to make light."]],
+  ];
+  V40_topic(9, "science", { id: "energy", title: "Energy", icon: "⚡", blurb: "Forms of energy, conductors and insulators.", std: "4-PS3", stdName: "NGSS 4-PS3: energy",
+    intro: "Energy makes things happen. It comes as light, sound, heat, motion and electricity, and it can change from one form to another.", learn: "Metals are conductors: heat and electricity move through them easily. Wood, plastic and rubber are insulators.", pics: [["💡", "Light", "energy"], ["🔊", "Sound", "energy"], ["🥄", "Metal", "conductor"], ["🧤", "Wool", "insulator"]],
+    trick: "Metal? Probably a conductor. Wood, plastic, rubber, cloth? Probably an insulator.",
+    mix: [[() => V40_sort(COND, CG, "s9c"), 2], [() => V40_match(EF, { ab: p => `Which one is an example of <b>${p[0]}</b>?`, ba: p => `What kind of energy is in <b>${p[2]}</b>?`, why: p => `${cap(p[2])} shows ${p[0]}.`, whyB: x => `${cap(x[2])} shows ${x[0]}.`, whyA: x => `${cap(x[0])} is shown by ${x[2]}.` }, "s9ef"), 2], [() => V40_fact(ENF, "s9en"), 1.5]] });
+
+  const CHG = [["an earthquake", "", "f"], ["a volcano erupting", "🌋", "f"], ["a landslide", "", "f"], ["a flood", "🌊", "f"], ["a river carving a canyon", "", "s"], ["wind wearing down a rock", "🌬️", "s"], ["a glacier moving", "🧊", "s"], ["waves smoothing beach rocks", "", "s"], ["tree roots cracking a rock", "🌳", "s"], ["a sand dune moving", "🏜️", "s"]];
+  const CHGG = { f: ["a fast change (minutes or days)", "fast changes", "Fast"], s: ["a slow change (many, many years)", "slow changes", "Slow"] };
+  const ER = [
+    ["Breaking rock into smaller pieces is called…", "weathering", ["erosion", "melting", "freezing"], "Weathering breaks rock down. Erosion moves the pieces away.", "🪨".replace("🪨", "⛰️"), ["Erosion carries the pieces away.", "Rock doesn't melt from weather.", "Freezing water can help, but the breaking is weathering."]],
+    ["Moving soil and rock pieces to a new place is called…", "erosion", ["weathering", "evaporation", "pollination"], "Water, wind and ice carry soil and rock away. That's erosion.", "🏞️", ["Weathering breaks rock; erosion moves it.", "Evaporation turns water into vapor.", "Pollination is about flowers."]],
+    ["How can planting grass on a hill help?", "Roots hold the soil and slow erosion", ["It makes the hill taller", "It stops rain from falling", "It makes rocks melt"], "Plant roots hold soil in place, so rain and wind carry less away.", "🌱", ["Grass doesn't make hills taller.", "Grass can't stop rain.", "Rocks don't melt from grass."]],
+    ["The Grand Canyon was carved mostly by…", "a river over millions of years", ["an earthquake in one day", "people with shovels", "a volcano"], "The Colorado River slowly wore away rock for millions of years.", "🏞️", ["Earthquakes don't carve canyons like this.", "People didn't dig the canyon.", "Volcanoes build land up instead."]],
+  ];
+  V40_topic(9, "science", { id: "earthchanges", title: "Earth's Changing Surface", icon: "🌋", blurb: "Weathering, erosion, earthquakes and volcanoes.", std: "4-ESS2", stdName: "NGSS 4-ESS1 / 4-ESS2 / 4-ESS3: earth's surface and natural hazards",
+    intro: "Earth's surface changes. Some changes are fast, like earthquakes and volcanoes. Others are slow, like rivers carving canyons.", learn: "Weathering breaks rock into pieces. Erosion carries the pieces away by water, wind or ice.", pics: [["🌋", "Volcano", "fast"], ["🌊", "Flood", "fast"], ["🏞️", "Canyon", "slow"], ["🧊", "Glacier", "slow"]],
+    trick: "Ask: Could I watch it happen today (fast), or does it take thousands of years (slow)?",
+    mix: [[() => V40_sort(CHG, CHGG, "s9ch"), 2], [() => V40_fact(ER, "s9er"), 2]] });
+
+  const RES = [["sunlight", "☀️", "r"], ["wind", "🌬️", "r"], ["trees (if we replant)", "🌳", "r"], ["flowing water", "💧", "r"], ["coal", "", "n"], ["oil", "🛢️", "n"], ["natural gas", "", "n"], ["gold", "", "n"]];
+  const RG = { r: ["a renewable resource (it can be replaced)", "renewable resources", "Renewable"], n: ["a nonrenewable resource (it runs out)", "nonrenewable resources", "Nonrenewable"] };
+  const RR = [
+    ["Using a cloth bag instead of a new plastic bag each time is an example of…", "reusing", ["recycling", "wasting", "burning"], "Reusing means using something again instead of throwing it away.", "👜", ["Recycling turns old things into new materials.", "Reusing saves things; it isn't wasting.", "Burning isn't reusing."]],
+    ["Putting cans in the blue bin so they become new cans is…", "recycling", ["reusing", "reducing", "littering"], "Recycling turns used materials into new things.", "♻️", ["Reusing means using the same can again.", "Reducing means using less in the first place.", "Littering is throwing trash on the ground."]],
+    ["Turning off the lights when you leave a room helps…", "save energy", ["make more coal", "make the room bigger", "use more electricity"], "Using less electricity saves energy and resources.", "💡", ["Coal can't be made quickly.", "Lights don't change room size.", "Turning lights off uses less."]],
+    ["Why are coal and oil called nonrenewable?", "They take millions of years to form", ["They grow back every year", "They come from the sun each day", "They are made in factories"], "Coal and oil formed over millions of years, so once used, they're gone for a very long time.", "🛢️", ["They don't grow back like plants.", "Sunlight is renewable, but coal isn't.", "Factories can't make new coal or oil."]],
+  ];
+  V40_topic(9, "science", { id: "resources", title: "Natural Resources", icon: "♻️", blurb: "Renewable resources, and reduce, reuse, recycle.", std: "4-ESS3", stdName: "NGSS 4-ESS3: energy and fuels from natural resources",
+    intro: "Natural resources come from nature. Renewable ones, like sunlight and wind, can be replaced. Nonrenewable ones, like coal and oil, run out.", learn: "We protect resources when we reduce, reuse and recycle.", pics: [["☀️", "Sunlight", "renewable"], ["🌬️", "Wind", "renewable"], ["🛢️", "Oil", "nonrenewable"], ["♻️", "Recycle", "turn old into new"]],
+    trick: "Ask: Will nature make more soon? Yes means renewable.",
+    mix: [[() => V40_sort(RES, RG, "s9r"), 2], [() => V40_fact(RR, "s9rr"), 2]] });
+
+  const ORG = [["heart", "❤️", "pumps blood through the body", ""], ["lungs", "", "take in air so you can breathe", "🌬️"], ["brain", "🧠", "controls the body and helps you think", ""], ["stomach", "", "breaks down food", "🍎"], ["bones", "🦴", "hold up and protect the body", ""], ["muscles", "💪", "help the body move", ""], ["skin", "✋", "covers and protects the body", ""]];
+  const STR = [
+    ["What does a bird's sharp, hooked beak help it do?", "Tear meat", ["Sip nectar", "Crack tiny seeds", "Swim"], "Hooked beaks, like an eagle's, tear meat.", "🦅", ["Long thin beaks sip nectar.", "Short strong beaks crack seeds.", "Beaks aren't for swimming."]],
+    ["Why does a porcupine have quills?", "To protect itself from predators", ["To keep cool", "To dig holes", "To fly"], "Sharp quills keep predators away.", "🦔", ["Quills aren't for cooling.", "Porcupines dig with claws.", "Porcupines can't fly."]],
+    ["What do a plant's roots do?", "Take in water and hold the plant in the ground", ["Make seeds", "Catch sunlight", "Make flowers"], "Roots absorb water and nutrients and anchor the plant.", "🌱", ["Flowers make seeds.", "Leaves catch sunlight.", "Flowers grow from the stem."]],
+    ["Why does a duck have webbed feet?", "To paddle in water", ["To climb trees", "To dig tunnels", "To run in snow"], "Webbed feet push water like paddles.", "🦆", ["Webbed feet aren't for climbing.", "Ducks don't dig tunnels.", "Webbed feet are made for swimming."]],
+    ["Why does a giraffe have a long neck?", "To reach leaves high in trees", ["To see underground", "To swim", "To hear better"], "A long neck lets giraffes eat leaves other animals can't reach.", "🦒", ["Giraffes don't look underground.", "Long necks aren't for swimming.", "Necks don't help hearing."]],
+  ];
+  V40_topic(9, "science", { id: "body", title: "Body & Structures", icon: "🧠", blurb: "How body parts help people, animals and plants.", std: "4-LS1", stdName: "NGSS 4-LS1: structures and functions",
+    intro: "Living things have parts that each do a job. In your body, the heart pumps blood, the lungs breathe, and the brain controls everything.", learn: "Animals and plants have special parts too: beaks, quills, webbed feet and roots.", pics: [["❤️", "Heart", "pumps blood"], ["🧠", "Brain", "controls the body"], ["🦴", "Bones", "support"], ["🦆", "Webbed feet", "paddle"]],
+    trick: "Ask: What does this part help the living thing do?",
+    mix: [[() => V40_match(ORG, { ab: p => `What is the job of the <b>${p[0]}</b>?`, ba: p => `Which body part has this job: <b>${p[2]}</b>?`, why: p => `The ${p[0]}: ${p[2]}.`, whyB: x => `That's the job of the ${x[0]}.`, whyA: x => `The ${x[0]}: ${x[2]}.` }, "s9b"), 2.5], [() => V40_fact(STR, "s9s"), 2]] });
+
+  const LIT = [["clear window glass", "", "t"], ["clean water", "💧", "t"], ["plastic wrap", "", "t"], ["wax paper", "", "tl"], ["frosted glass", "", "tl"], ["tissue paper", "", "tl"], ["a wooden door", "🚪", "o"], ["a book", "📕", "o"], ["a brick wall", "🧱", "o"], ["aluminum foil", "", "o"]];
+  const LG2 = { t: ["transparent (lets almost all light through)", "transparent things", "Transparent"], tl: ["translucent (lets some light through)", "translucent things", "Translucent"], o: ["opaque (blocks light)", "opaque things", "Opaque"] };
+  const SL = [
+    ["Sound is made when something…", "vibrates (shakes back and forth)", ["glows", "melts", "freezes"], "Vibrations make sound waves that travel to your ears.", "🔊", ["Glowing makes light, not sound.", "Melting doesn't make sound by itself.", "Freezing doesn't make sound."]],
+    ["What makes a shadow?", "Something blocking light", ["Something making sound", "Water evaporating", "A mirror"], "When an object blocks light, it makes a dark shape called a shadow.", "🌳", ["Sound can't make a shadow.", "Evaporation doesn't make shadows.", "Mirrors reflect light."]],
+    ["What does a mirror do with light?", "Reflects it (bounces it back)", ["Eats it", "Makes it louder", "Turns it into water"], "Mirrors are smooth and shiny, so light bounces off them.", "🪞".replace("🪞", "🔦"), ["Light isn't eaten.", "Light doesn't get louder.", "Light can't become water."]],
+    ["We see an apple because…", "light bounces off it into our eyes", ["our eyes shoot out light", "apples glow", "the apple makes a sound"], "Light reflects off objects and enters our eyes.", "🍎👀", ["Eyes take in light; they don't send it out.", "Apples don't make their own light.", "Sound doesn't let us see."]],
+    ["A loud drum vibrates…", "more strongly than a quiet drum", ["not at all", "less than a quiet drum", "only in water"], "Bigger vibrations make louder sounds.", "🥁", ["All sounds need vibrations.", "Louder means bigger vibrations.", "Drums vibrate in air too."]],
+  ];
+  V40_topic(9, "science", { id: "lightsound", title: "Light & Sound", icon: "🔦", blurb: "Vibrations, shadows, reflections and materials.", std: "4-PS4", stdName: "NGSS 4-PS4 / 1-PS4: waves, light and sound",
+    intro: "Sound is made by vibrations. Light travels in straight lines, bounces off mirrors, and makes shadows when it's blocked.", learn: "Transparent things let light through, translucent let some through, and opaque things block it.", pics: [["🥁", "Drum", "vibrates"], ["🔦", "Light", "straight lines"], ["💧", "Water", "transparent"], ["🧱", "Brick", "opaque"]],
+    trick: "Hold it up to a flashlight in your mind: see clearly, see blurry, or see nothing?",
+    mix: [[() => V40_sort(LIT, LG2, "s9l"), 2], [() => V40_fact(SL, "s9sl"), 2]] });
+}
+
+/* =================== SOCIAL STUDIES · AGE 6 (Grade 1) =================== */
+{
+  const HELP = [["firefighter", "👩‍🚒", "puts out fires and keeps people safe", "🔥"], ["doctor", "👩‍⚕️", "helps sick people get better", ""], ["teacher", "👩‍🏫", "helps children learn", "📚"], ["mail carrier", "", "brings letters and packages", "📬"], ["police officer", "👮", "keeps the community safe and helps people", ""], ["farmer", "👩‍🌾", "grows food and raises animals", "🌽"], ["baker", "", "bakes bread and treats", "🍞"], ["librarian", "", "helps people find books", "📚"], ["veterinarian", "", "takes care of sick animals", "🐶"], ["dentist", "", "keeps teeth healthy", "🦷"], ["bus driver", "", "drives people safely to school and work", "🚌"]];
+  V40_topic(6, "social", { id: "helpers", title: "Community Helpers", icon: "👩‍🚒", blurb: "The people who help our community.", std: "C3 D2.Civ", stdName: "C3 Civics D2.Civ.1–2: people and roles in the community",
+    intro: "A community is a place where people live, work and play. Community helpers have jobs that help everyone.", learn: "Firefighters fight fires, doctors help sick people, and farmers grow our food.", pics: [["👩‍🚒", "Firefighter", "fires"], ["👩‍⚕️", "Doctor", "health"], ["👩‍🌾", "Farmer", "food"], ["👮", "Police officer", "safety"]],
+    trick: "Think about where you'd see the helper and what tools they use.",
+    mix: [[() => V40_match(HELP, { ab: p => `What does a <b>${p[0]}</b> do?`, ba: p => `Who <b>${p[2]}</b>?`, why: p => `A ${p[0]} ${p[2]}.`, whyB: x => `That's the job of a ${x[0]}.`, whyA: x => `A ${x[0]} ${x[2]}.` }, "c6h"), 1]] });
+
+  const NW = [["food", "🍎", "n"], ["water", "💧", "n"], ["a home", "🏠", "n"], ["warm clothes", "🧥", "n"], ["medicine when sick", "", "n"], ["a video game", "🎮", "w"], ["candy", "🍬", "w"], ["a new toy", "🧸", "w"], ["a bike", "🚲", "w"], ["a balloon", "🎈", "w"], ["a trip to the zoo", "", "w"], ["a skateboard", "", "w"]];
+  const NWG = { n: ["a need (something we must have to live)", "needs", "Need"], w: ["a want (nice to have, but we can live without it)", "wants", "Want"] };
+  V40_topic(6, "social", { id: "needswants", title: "Needs & Wants", icon: "🛒", blurb: "What we need to live, and what we would like.", std: "C3 D2.Eco", stdName: "C3 Economics D2.Eco.1–2: choices, needs and wants",
+    intro: "Needs are things we must have to live: food, water, clothes and a home. Wants are things we'd like but can live without.", learn: "Food is a need. A video game is a want.", pics: [["🍎", "Food", "need"], ["🏠", "Home", "need"], ["🎮", "Game", "want"], ["🍬", "Candy", "want"]],
+    trick: "Ask: Could I stay alive and healthy without it? If yes, it's a want.",
+    mix: [[() => V40_sort(NW, NWG, "c6n"), 1]] });
+
+  const MAPF = [
+    ["What is a map?", "A drawing of a place from above", ["A photo of a person", "A kind of book about animals", "A list of words"], "A map shows a place as if you were looking down like a bird.", "🗺️", ["Photos of people aren't maps.", "Animal books aren't maps.", "A map shows places, not just words."]],
+    ["On a map, what color usually means water?", "Blue", ["Red", "Black", "Orange"], "Mapmakers color water blue: lakes, rivers and oceans.", "🌊", ["Red is often used for roads or borders.", "Black is often used for words and lines.", "Orange is not used for water."]],
+    ["What does a map key (legend) tell you?", "What the symbols on the map mean", ["What time it is", "Who drew the map", "How to spell words"], "The map key explains the little pictures, or symbols, on a map.", "🔑", ["Maps don't tell time.", "The mapmaker's name isn't the key.", "The key is about symbols, not spelling."]],
+    ["What is a globe?", "A round model of the Earth", ["A flat map of a town", "A kind of ball game", "A light bulb"], "A globe is shaped like a ball, just like Earth.", "🌍", ["A globe is round, not flat.", "A globe is a model of Earth, not a game.", "A globe is a model, not a light."]],
+    ["On a map, a tiny tree picture most likely stands for…", "a park or forest", ["a school", "a lake", "a road"], "Map symbols are little pictures. Trees often mean a park or forest.", "🌳", ["A school symbol is usually a building or flag.", "Lakes are shown in blue.", "Roads are lines."]],
+    ["Which is the biggest?", "Country", ["State", "City", "Neighborhood"], "A neighborhood is in a city, a city is in a state, and a state is in a country.", "🇺🇸", ["A state is part of a country.", "A city is part of a state.", "A neighborhood is part of a city."]],
+  ];
+  MAPF.push(
+
+  ["On a map, roads are usually shown as…", "lines", ["blue circles", "tiny trees", "stars"], "Roads are drawn as lines that connect places.", "🛣️", ["Blue shapes usually mean water.", "Tiny trees often mean a park.", "Stars often mark capitals."]],
+  ["On a state map, a star often shows…", "the capital city", ["a forest", "a lake", "a school bus"], "Mapmakers often use a star to show the capital.", "⭐", ["Forests are often shown with trees.", "Lakes are shown in blue.", "School buses aren't on state maps."]],
+  ["Which is the smallest place?", "Your bedroom", ["Your town", "Your state", "Your country"], "Your bedroom is inside your home, which is in your town, state and country.", "🛏️", ["Your town has many homes in it.", "Your state has many towns.", "Your country has many states."]],
+  ["Most of Earth is covered by…", "water", ["sand", "ice cream", "roads"], "About three-quarters of Earth's surface is water.", "🌊", ["Deserts cover only part of the land.", "Ice cream isn't part of Earth's surface.", "Roads cover only a tiny part."]],
+  ["What would help you find your way around a big zoo?", "A map of the zoo", ["A cookbook", "A calendar", "A clock"], "A map shows where things are.", "🗺️", ["A cookbook shows recipes.", "A calendar shows days.", "A clock shows time."]],
+  ["A map of your classroom drawn from above would show…", "the desks and rug as shapes", ["only the ceiling", "what's for lunch", "the weather"], "Maps show where things are, as seen from above.", "🏫", ["From above you'd see the floor, not the ceiling.", "Maps don't show lunch.", "Classroom maps don't show weather."]],
+  ["What is the name of our country?", "The United States of America", ["Canada", "Mexico", "Brazil"], "Our country is the United States of America.", "🇺🇸", ["Canada is our neighbor to the north.", "Mexico is our neighbor to the south.", "Brazil is in South America."]],
+  );
+  V40_topic(6, "social", { id: "mapbasics", title: "Map Basics", icon: "🗺️", blurb: "Maps, globes, symbols and keys.", std: "C3 D2.Geo", stdName: "C3 Geography D2.Geo.1–3: maps and globes",
+    intro: "A map is a drawing of a place from above. A globe is a round model of Earth. Maps use symbols, and the map key tells what they mean.", learn: "Blue means water, tiny trees can mean a park, and lines are roads.", pics: [["🗺️", "Map", "flat drawing"], ["🌍", "Globe", "round model"], ["🔑", "Map key", "explains symbols"], ["🌊", "Blue", "water"]],
+    trick: "Use the map key! It tells you what each little picture means.",
+    mix: [[() => V40_fact(MAPF, "c6m"), 1]] });
+
+  const THEN = [["candle", "🕯️", "light bulb", "💡"], ["horse and wagon", "🐴", "car", "🚗"], ["letter by mail", "✉️", "email or text", "📱"], ["washboard", "", "washing machine", ""], ["old phone with a cord", "☎️", "cell phone", "📱"], ["chalk slate", "", "tablet", ""], ["ice box", "🧊", "refrigerator", ""], ["oil lamp", "", "flashlight", "🔦"], ["record player", "", "music on a phone", "🎧"]];
+  V40_topic(6, "social", { id: "thennow", title: "Then & Now", icon: "⏳", blurb: "How life long ago is different from today.", std: "C3 D2.His", stdName: "C3 History D2.His.2: change and continuity over time",
+    intro: "Long ago, people lived differently. Many things we use today are new versions of old things.", learn: "Long ago, people used candles for light. Now we use light bulbs.", pics: [["🕯️", "Candle", "then"], ["💡", "Light bulb", "now"], ["🐴", "Horse and wagon", "then"], ["🚗", "Car", "now"]],
+    trick: "Ask: Does it need electricity or a screen? Then it's probably from now.",
+    mix: [[() => V40_match(THEN, { ab: p => `Long ago, people used this: <b>${p[0]}</b>. What do many people use <b>now</b>?`, ba: p => `Today we use this: <b>${p[2]}</b>. What did people use <b>long ago</b>?`, why: p => `Long ago: ${p[0]}. Now: ${p[2]}.`, whyB: x => `The ${x[2]} took the place of the ${x[0]}.`, whyA: x => `Long ago, the ${x[0]} did the job of today's ${x[2]}.` }, "c6t"), 1]] });
+
+  const USF = [
+    ["How many stars are on the United States flag?", "50", ["13", "10", "100"], "There are 50 stars, one for each state.", "🇺🇸", ["13 is the number of stripes.", "There are more than 10 states.", "There are 50 states, not 100."]],
+    ["What do the 13 stripes on the U.S. flag stand for?", "The first 13 colonies", ["13 presidents", "13 big cities", "13 holidays"], "The stripes stand for the 13 colonies that became the first states.", "🇺🇸", ["The stripes aren't for presidents.", "They aren't for cities.", "They aren't for holidays."]],
+    ["Which bird is a symbol of the United States?", "The bald eagle", ["The robin", "The parrot", "The penguin"], "The bald eagle is the national bird. It stands for strength and freedom.", "🦅", ["The robin is common, but it isn't the national bird.", "Parrots aren't a U.S. symbol.", "Penguins don't live in the wild in the U.S."]],
+    ["Where does the President of the United States live and work?", "The White House", ["The Statue of Liberty", "The Liberty Bell", "Mount Rushmore"], "The President lives and works in the White House in Washington, D.C.", "🏛️", ["The Statue of Liberty is in New York Harbor.", "The Liberty Bell is in Philadelphia.", "Mount Rushmore is a carving in South Dakota."]],
+    ["The Statue of Liberty stands for…", "freedom", ["sports", "food", "weather"], "The Statue of Liberty welcomes people and stands for freedom.", "🗽", ["It isn't about sports.", "It isn't about food.", "It isn't about weather."]],
+    ["On which holiday do Americans celebrate the country's birthday?", "Independence Day (July 4th)", ["Thanksgiving", "Valentine's Day", "Labor Day"], "On July 4, 1776, the Declaration of Independence was adopted.", "🎆", ["Thanksgiving is about giving thanks.", "Valentine's Day is about love and friendship.", "Labor Day honors workers."]],
+  ];
+  USF.push(
+
+  ["What do we say to show respect for the flag?", "The Pledge of Allegiance", ["Happy Birthday", "The ABC song", "A riddle"], "The Pledge of Allegiance is a promise to be loyal to our country.", "🇺🇸", ["Happy Birthday is for birthdays.", "The ABC song helps us learn letters.", "A riddle is a puzzle."]],
+  ["What is the national anthem of the United States?", "The Star-Spangled Banner", ["Twinkle, Twinkle, Little Star", "Row, Row, Row Your Boat", "The Wheels on the Bus"], "The national anthem is “The Star-Spangled Banner.”", "🎵", ["That's a bedtime song.", "That's a fun round song.", "That's a children's song."]],
+  ["What colors are on the U.S. flag?", "Red, white and blue", ["Green and yellow", "Purple and orange", "Black and pink"], "The flag is red, white and blue.", "🇺🇸", ["Those aren't the flag's colors.", "Those aren't the flag's colors.", "Those aren't the flag's colors."]],
+  ["The Liberty Bell is a symbol of…", "freedom", ["breakfast", "sports", "the weather"], "The Liberty Bell stands for freedom.", "🔔", ["It isn't about food.", "It isn't about sports.", "It isn't about weather."]],
+  ["Mount Rushmore shows the faces of…", "four presidents", ["four astronauts", "four animals", "four teachers"], "Mount Rushmore has the faces of four U.S. presidents carved in stone.", "⛰️", ["They are presidents, not astronauts.", "They are people, not animals.", "They are presidents, not teachers."]],
+  ["Which holiday in November is about being thankful?", "Thanksgiving", ["Independence Day", "Halloween", "New Year's Day"], "On Thanksgiving, many families share a meal and give thanks.", "🦃", ["Independence Day is July 4th.", "Halloween is October 31st.", "New Year's Day is January 1st."]],
+  ["What is the President's job?", "To lead the country", ["To deliver the mail", "To teach first grade", "To fix cars"], "The President leads the United States.", "🏛️", ["Mail carriers deliver mail.", "Teachers teach classes.", "Mechanics fix cars."]],
+  );
+  V40_topic(6, "social", { id: "symbols", title: "American Symbols", icon: "🇺🇸", blurb: "The flag, the bald eagle and other symbols.", std: "C3 D2.Civ", stdName: "C3 Civics D2.Civ.2 / D2.His: national symbols",
+    intro: "Symbols are pictures or objects that stand for something. The United States has symbols like the flag, the bald eagle and the Statue of Liberty.", learn: "The flag has 50 stars (one per state) and 13 stripes (the first 13 colonies).", pics: [["🇺🇸", "Flag", "50 stars, 13 stripes"], ["🦅", "Bald eagle", "national bird"], ["🗽", "Statue of Liberty", "freedom"], ["🏛️", "White House", "the President"]],
+    trick: "Stars = states, stripes = the first colonies.",
+    mix: [[() => V40_fact(USF, "c6s"), 1]] });
+}
+
+/* =================== SOCIAL STUDIES · AGE 7 (Grade 2) =================== */
+{
+  /* computed: a small map with directions */
+  const PLACES = [["school", "🏫"], ["park", "🌳"], ["library", "📚"], ["store", "🏪"], ["house", "🏠"], ["hospital", "🏥"], ["post office", "🏤"], ["fire station", "🚒"]];
+  function dirMap(age) {
+    for (let t = 0; t < 50; t++) {
+      const n = 3, cells = shuffle(PLACES.slice()).slice(0, 5), pos = shuffle(range(0, 8)).slice(0, 5);
+      const a = R(0, 4), b = R(0, 4); if (a === b) continue;
+      const [ar, ac] = [Math.floor(pos[a] / 3), pos[a] % 3], [br, bc] = [Math.floor(pos[b] / 3), pos[b] % 3];
+      let d = null; if (ar === br) d = bc > ac ? "east" : "west"; else if (ac === bc) d = br > ar ? "south" : "north"; if (!d) continue;
+      const grid = Array(9).fill(""); cells.forEach((c, i) => { grid[pos[i]] = `<span class="emo" title="${c[0]}">${c[1]}</span><small>${c[0]}</small>`; });
+      const vis = `<div class="v40-map"><div class="v40-compass">N<br><b>W ✛ E</b><br>S</div><div class="v40-grid">${grid.map(g => `<span>${g}</span>`).join("")}</div></div>`;
+      const opts = ["North", "South", "East", "West"], ans = cap(d), whyNot = {};
+      const opp = { north: "south", south: "north", east: "west", west: "east" };
+      opts.forEach(o => { if (o === ans) return; whyNot[o] = o.toLowerCase() === opp[d] ? `That's backwards. Start at the ${cells[a][0]} and look toward the ${cells[b][0]}.` : `The ${cells[b][0]} is in the same ${d === "east" || d === "west" ? "row" : "column"}, so it's ${d === "east" || d === "west" ? "east or west" : "north or south"}.`; });
+      return V40_Q({ q: `Look at the map. The <b>${cells[b][0]}</b> is which direction from the <b>${cells[a][0]}</b>?`, vis, opts, ans, why: `Start at the ${cells[a][0]} and move toward the ${cells[b][0]}: that's ${d}. North is up, south is down, east is right, west is left.`, whyNot, key: `c7d${pos}${a}${b}`, big: 0 });
+    }
+  }
+  const DIRF = [
+    ["On most maps, which direction is at the top?", "North", ["South", "East", "West"], "Most maps put north at the top. The compass rose shows it.", "🧭", ["South is usually at the bottom.", "East is usually on the right.", "West is usually on the left."]],
+    ["The sun rises in the…", "east", ["west", "north", "south"], "The sun rises in the east and sets in the west.", "🌅", ["The sun sets in the west.", "The sun never rises in the north.", "The sun never rises in the south."]],
+    ["What does a compass rose show?", "Directions: north, south, east, west", ["The time", "The weather", "How far apart places are"], "A compass rose shows directions on a map.", "🧭", ["Clocks show time.", "Weather maps use other symbols.", "The map scale shows distance."]],
+  ];
+  V40_topic(7, "social", { id: "directions", title: "Maps & Directions", icon: "🧭", blurb: "North, south, east and west on a map.", std: "C3 D2.Geo", stdName: "C3 Geography D2.Geo.1–3: map skills and cardinal directions",
+    intro: "The four cardinal directions are north, south, east and west. On most maps, north is up, south is down, east is right, and west is left.", learn: "A compass rose on the map shows the directions.", pics: [["⬆️", "North", "up"], ["⬇️", "South", "down"], ["➡️", "East", "right"], ["⬅️", "West", "left"]],
+    trick: "Never Eat Soggy Waffles: North, East, South, West, going clockwise.",
+    mix: [[() => dirMap(7), 3], [() => V40_fact(DIRF, "c7df"), 1]] });
+
+  const GS = [["a loaf of bread", "🍞", "g"], ["a pair of shoes", "👟", "g"], ["a toy truck", "🚚", "g"], ["a box of crayons", "🖍️", "g"], ["a bicycle", "🚲", "g"], ["apples", "🍎", "g"], ["a haircut", "💇", "s"], ["a doctor's checkup", "🩺", "s"], ["a bus ride", "🚌", "s"], ["fixing a car", "🔧", "s"], ["teaching a class", "👩‍🏫", "s"], ["delivering mail", "📬", "s"]].filter(x => x[1] !== "🩺");
+  const GSG = { g: ["a good (a thing you can buy and hold)", "goods", "Good"], s: ["a service (work someone does for you)", "services", "Service"] };
+  const EC = [
+    ["A farmer grows corn and sells it. The farmer is a…", "producer", ["consumer", "customer", "renter"], "Producers make or grow goods, or provide services.", "👩‍🌾", ["Consumers buy and use goods.", "Customers are buyers, like consumers.", "Renting isn't what the farmer is doing."]],
+    ["You buy an apple at the store. You are a…", "consumer", ["producer", "farmer", "baker"], "A consumer buys and uses goods and services.", "🍎", ["A producer grows or makes the apple.", "You didn't grow the apple.", "You didn't bake anything."]],
+    ["Trading a sticker for your friend's pencil is called…", "bartering", ["saving", "borrowing", "spending"], "Bartering means trading goods without using money.", "🔄", ["Saving means keeping money for later.", "Borrowing means you give it back.", "Spending uses money."]],
+    ["Why do people save money in a bank or piggy bank?", "To buy something later", ["To throw it away", "To make it disappear", "Because money is a toy"], "Saving means keeping money now to buy something later.", "🐷", ["Saving keeps money; it doesn't throw it away.", "Saved money stays there.", "Money is for buying things we need and want."]],
+  ];
+  V40_topic(7, "social", { id: "goods", title: "Goods, Services & Money", icon: "🏪", blurb: "Producers, consumers, trading and saving.", std: "C3 D2.Eco", stdName: "C3 Economics D2.Eco.1–3: goods, services, producers and consumers",
+    intro: "Goods are things you can buy and hold. Services are work people do for you. Producers make goods and services; consumers buy and use them.", learn: "Bread is a good. A haircut is a service.", pics: [["🍞", "Bread", "a good"], ["💇", "Haircut", "a service"], ["👩‍🌾", "Farmer", "producer"], ["🛒", "Shopper", "consumer"]],
+    trick: "Can you hold it in your hands? It's a good. Is someone doing work for you? It's a service.",
+    mix: [[() => V40_sort(GS, GSG, "c7g"), 2.5], [() => V40_fact(EC, "c7e"), 1.5]] });
+
+  const COM = [["tall buildings close together", "🏙️", "u"], ["subways and lots of traffic", "🚇", "u"], ["apartments and busy sidewalks", "", "u"], ["houses with yards and nearby shopping centers", "🏘️", "su"], ["quiet streets near a big city", "", "su"], ["farms and lots of open land", "🚜", "r"], ["houses far apart, with fields between them", "", "r"], ["barns, cows and long country roads", "🐄", "r"]];
+  const CG = { u: ["urban (a city)", "city places", "Urban"], su: ["suburban (near a city)", "suburbs", "Suburban"], r: ["rural (the countryside)", "country places", "Rural"] };
+  V40_topic(7, "social", { id: "communities", title: "City, Suburb & Country", icon: "🏙️", blurb: "Urban, suburban and rural communities.", std: "C3 D2.Geo", stdName: "C3 Geography D2.Geo.4–6: human and physical characteristics of places",
+    intro: "Communities can be urban (cities), suburban (near cities), or rural (the countryside).", learn: "Cities have tall buildings and many people. Suburbs have houses with yards. Rural areas have farms and open land.", pics: [["🏙️", "Urban", "city"], ["🏘️", "Suburban", "near a city"], ["🚜", "Rural", "countryside"]],
+    trick: "Lots of people and tall buildings = urban. Farms and fields = rural. In between = suburban.",
+    mix: [[() => V40_sort(COM, CG, "c7c"), 1]] });
+
+  const CIT = [
+    ["Which shows being a good citizen?", "Picking up litter at the park", ["Writing on walls", "Breaking the rules", "Being unkind to neighbors"], "Good citizens care for their community and the people in it.", "🧹", ["That damages the community.", "Rules keep everyone safe and fair.", "Good citizens are kind."]],
+    ["Your class votes on a game. 12 kids pick tag and 8 pick soccer. What happens?", "The class plays tag", ["The class plays soccer", "Nobody plays", "The teacher picks a third game"], "In a vote, the choice with the most votes wins. 12 is more than 8.", "🗳️", ["Soccer got fewer votes: 8 is less than 12.", "The vote decided a game.", "The vote already chose."]],
+    ["Who makes the rules in your classroom?", "The teacher (often with the class)", ["The janitor", "A visitor", "The mail carrier"], "Teachers make classroom rules, often with help from students.", "👩‍🏫", ["The janitor keeps the school clean.", "Visitors don't make class rules.", "Mail carriers deliver mail."]],
+    ["Why do we have laws?", "To keep people safe and treat everyone fairly", ["To make life boring", "So only adults can have fun", "To make people sad"], "Laws help people live together safely and fairly.", "⚖️", ["Laws aren't meant to be boring.", "Laws protect everyone, kids too.", "Laws are meant to help people."]],
+    ["A responsibility is…", "something you should do", ["something you get for free", "a kind of toy", "a holiday"], "Responsibilities are duties, like following rules and helping others.", "✅", ["A right is something you have; a responsibility is something you do.", "Responsibilities aren't toys.", "Responsibilities aren't holidays."]],
+    ["When adults vote in an election, they choose…", "leaders and laws", ["their favorite color", "what to eat for lunch", "the weather"], "Voting lets citizens choose leaders and decide on some laws.", "🗳️", ["Elections aren't about favorite colors.", "Elections don't choose lunch.", "No one can vote on the weather."]],
+  ];
+  CIT.push(
+
+  ["Which is a right that people in the United States have?", "Freedom of speech", ["Taking things without paying", "Breaking traffic laws", "Driving without a license"], "Freedom of speech means you can share your ideas.", "🗣️", ["Taking things without paying is stealing.", "Laws keep roads safe.", "Drivers need a license."]],
+  ["You find a wallet on the playground. What should a good citizen do?", "Give it to a teacher or another grown-up", ["Keep it", "Throw it away", "Hide it"], "Returning lost things is honest and helps the owner.", "👛", ["It belongs to someone else.", "The owner needs it back.", "Hiding it keeps it from its owner."]],
+  ["Why do we follow the rules of a game?", "So it's fair and fun for everyone", ["So one person always wins", "So the game is boring", "So no one can play"], "Rules make games fair.", "🎲", ["Rules are about fairness, not one winner.", "Rules help games stay fun.", "Rules help everyone play."]],
+  ["Who can vote in U.S. elections?", "Citizens who are 18 or older", ["People of any age", "Only children", "Only teachers"], "U.S. citizens can vote when they turn 18.", "🗳️", ["You have to be at least 18.", "Children can't vote in elections yet.", "Many grown-ups vote, not only teachers."]],
+  ["What is a community?", "A place where people live, work and play together", ["A kind of food", "A single house", "A type of animal"], "Communities can be towns, cities or neighborhoods.", "🏘️", ["Food isn't a community.", "A community has many homes and people.", "A community is made of people."]],
+  ["Helping at a food drive without being paid is called…", "volunteering", ["voting", "paying taxes", "bartering"], "Volunteers give their time to help others.", "🥫", ["Voting is choosing leaders.", "Taxes are money paid to the government.", "Bartering is trading."]],
+  ["A law that says to stop at red lights helps…", "keep people safe", ["make cars faster", "make streets louder", "save paint"], "Traffic laws prevent crashes.", "🚦", ["Stopping slows cars down.", "It isn't about noise.", "It isn't about paint."]],
+  ["Which is a responsibility of a student?", "Doing your best work", ["Eating everyone's snacks", "Talking during tests", "Skipping class"], "Students are responsible for learning and doing their part.", "📚", ["Snacks belong to their owners.", "Tests need quiet.", "Students should come to class."]],
+  );
+  V40_topic(7, "social", { id: "citizens", title: "Good Citizens", icon: "🗳️", blurb: "Rules, laws, voting, rights and responsibilities.", std: "C3 D2.Civ", stdName: "C3 Civics D2.Civ.7–12: civic virtues, rules and laws",
+    intro: "A citizen is a member of a community or country. Good citizens follow rules, help others, and take care of their community.", learn: "We vote to make fair group choices: the choice with the most votes wins.", pics: [["🗳️", "Vote", "make choices"], ["⚖️", "Laws", "keep us safe"], ["🧹", "Help", "clean up"], ["🤝", "Respect", "be kind"]],
+    trick: "Ask: Does this help the whole community and treat people fairly?",
+    mix: [[() => V40_fact(CIT, "c7ct"), 1]] });
+
+  const CEL = [
+    ["Which celebration is a Hindu “festival of lights” that many families in India celebrate with oil lamps called diyas?", "Diwali", ["Thanksgiving", "Lunar New Year", "Kwanzaa"], "Diwali is the Hindu festival of lights. Families light diyas and share sweets.", "🪔".replace("🪔", "✨"), ["Thanksgiving is an American holiday about giving thanks.", "Lunar New Year celebrates the new year on the lunar calendar.", "Kwanzaa celebrates African American culture."]],
+    ["Which celebration lasts eight nights and uses a menorah?", "Hanukkah", ["Diwali", "Thanksgiving", "Día de los Muertos"], "Jewish families light a menorah during the eight nights of Hanukkah.", "🕎", ["Diwali uses diyas (oil lamps).", "Thanksgiving is one day in November.", "Día de los Muertos remembers loved ones who have died."]],
+    ["Which holiday, celebrated by Muslims, comes at the end of the month of Ramadan?", "Eid al-Fitr", ["Hanukkah", "Diwali", "Kwanzaa"], "Eid al-Fitr is a happy holiday with prayers, family meals and gifts after Ramadan.", "🌙", ["Hanukkah is a Jewish holiday.", "Diwali is a Hindu festival.", "Kwanzaa celebrates African American culture."]],
+    ["Which celebration often has dragon dances and red envelopes?", "Lunar New Year", ["Eid al-Fitr", "Hanukkah", "Independence Day"], "Many people in China and other Asian countries celebrate Lunar New Year with dragon dances and red envelopes.", "🐉", ["Eid al-Fitr comes at the end of Ramadan.", "Hanukkah uses a menorah.", "Independence Day has fireworks on July 4th."]],
+    ["Which Mexican celebration honors family members who have died, with bright flowers and ofrendas?", "Día de los Muertos", ["Lunar New Year", "Diwali", "Thanksgiving"], "On Día de los Muertos, families remember loved ones with marigolds, photos and favorite foods.", "🌼", ["Lunar New Year celebrates a new year.", "Diwali is the Hindu festival of lights.", "Thanksgiving is about giving thanks."]],
+    ["Which week-long celebration honors African American culture and uses a kinara with seven candles?", "Kwanzaa", ["Hanukkah", "Eid al-Fitr", "Lunar New Year"], "Kwanzaa lasts seven days, with one candle for each of its seven principles.", "🕯️", ["Hanukkah lasts eight nights and uses a menorah.", "Eid al-Fitr comes after Ramadan.", "Lunar New Year starts the new year."]],
+    ["What do many families share on Thanksgiving?", "A big meal and giving thanks", ["Red envelopes", "A kinara", "Diyas"], "On Thanksgiving, families in the U.S. often share a meal and say what they're thankful for.", "🦃", ["Red envelopes are for Lunar New Year.", "A kinara is used for Kwanzaa.", "Diyas are lit for Diwali."]],
+    ["People around the world have different traditions. What's a respectful way to learn about them?", "Ask kind questions and listen", ["Laugh at what's different", "Say yours is the only right way", "Ignore other people"], "Learning about other cultures with kindness and curiosity helps us all get along.", "🌍", ["Laughing at differences can hurt feelings.", "Many traditions can all be special.", "Listening helps us learn."]],
+  ];
+  CEL.push(
+
+  ["Many people welcome the New Year on January 1 with…", "fireworks and countdowns", ["a menorah", "a kinara", "diyas"], "On New Year's Eve, many people count down to midnight.", "🎆", ["A menorah is used for Hanukkah.", "A kinara is used for Kwanzaa.", "Diyas are lit for Diwali."]],
+  ["The foods, music, clothes and holidays a group of people share are called their…", "culture", ["weather", "geography", "gravity"], "Culture is the way of life a group of people shares.", "🌍", ["Weather is about the sky outside.", "Geography is about land and places.", "Gravity is a force."]],
+  ["People in different places may dress differently because of…", "the weather and their traditions", ["magic", "their pets", "the moon"], "Clothes fit the weather and the traditions of a place.", "🧥", ["Clothes aren't chosen by magic.", "Pets don't decide clothes.", "The moon doesn't decide clothes."]],
+  ["Which holiday do many Christians celebrate on December 25?", "Christmas", ["Diwali", "Eid al-Fitr", "Kwanzaa"], "Many Christians celebrate Christmas on December 25.", "🎄", ["Diwali is a Hindu festival in the fall.", "Eid al-Fitr comes at the end of Ramadan.", "Kwanzaa starts on December 26."]],
+  ["During Ramadan, many Muslims…", "fast from sunrise to sunset", ["eat only candy", "light a menorah", "hang red envelopes"], "During Ramadan, many Muslims don't eat or drink during daylight, then share meals in the evening.", "🌙", ["Fasting means not eating during the day.", "A menorah is for Hanukkah.", "Red envelopes are for Lunar New Year."]],
+  );
+  V40_topic(7, "social", { id: "cultures", title: "Celebrations Around the World", icon: "🎉", blurb: "Holidays and traditions of many cultures.", std: "C3 D2.His", stdName: "C3 History / Geography: culture and traditions",
+    intro: "People around the world celebrate special days in many ways, with food, lights, music and family.", learn: "Diwali has oil lamps, Hanukkah has a menorah, Lunar New Year has dragon dances, and Eid al-Fitr comes after Ramadan.", pics: [["✨", "Diwali", "festival of lights"], ["🕎", "Hanukkah", "menorah"], ["🐉", "Lunar New Year", "dragon dances"], ["🌙", "Eid al-Fitr", "after Ramadan"]],
+    trick: "Look for the special object in the clue: menorah, diyas, red envelopes, or a kinara.",
+    mix: [[() => V40_fact(CEL, "c7cu"), 1]] });
+}
+
+/* =================== SOCIAL STUDIES · AGE 8 (Grade 3) =================== */
+{
+  const CONT = [["Egypt", "", "Africa", ""], ["Kenya", "", "Africa", ""], ["Brazil", "", "South America", ""], ["Argentina", "", "South America", ""], ["China", "", "Asia", ""], ["India", "", "Asia", ""], ["Japan", "", "Asia", ""], ["France", "", "Europe", ""], ["Italy", "", "Europe", ""], ["Canada", "", "North America", ""], ["Mexico", "", "North America", ""], ["the United States", "", "North America", ""]];
+  const CF = [
+    ["How many continents are there?", "7", ["5", "10", "3"], "The seven continents are Africa, Antarctica, Asia, Australia, Europe, North America and South America.", "🌍", ["There are 5 oceans, but 7 continents.", "There are fewer than 10.", "There are more than 3."]],
+    ["Which is the largest ocean?", "The Pacific Ocean", ["The Atlantic Ocean", "The Indian Ocean", "The Arctic Ocean"], "The Pacific is the biggest and deepest ocean.", "🌊", ["The Atlantic is second biggest.", "The Indian Ocean is third.", "The Arctic is the smallest."]],
+    ["Which continent is the coldest, covered in ice?", "Antarctica", ["Africa", "Australia", "South America"], "Antarctica is at the South Pole and is covered in thick ice.", "🧊", ["Much of Africa is hot.", "Australia is mostly warm.", "Much of South America is warm."]],
+    ["Which continent is also a country?", "Australia", ["Asia", "Africa", "Europe"], "Australia is both a country and a continent.", "🦘", ["Asia has many countries.", "Africa has many countries.", "Europe has many countries."]],
+    ["Which ocean is between the United States and Europe?", "The Atlantic Ocean", ["The Pacific Ocean", "The Indian Ocean", "The Southern Ocean"], "The Atlantic Ocean lies between the Americas and Europe and Africa.", "🌊", ["The Pacific is west of the United States.", "The Indian Ocean is near Africa, Asia and Australia.", "The Southern Ocean surrounds Antarctica."]],
+    ["What is the biggest continent?", "Asia", ["Europe", "Australia", "Antarctica"], "Asia is the largest continent and has the most people.", "🌏", ["Europe is much smaller.", "Australia is the smallest continent.", "Antarctica is big, but smaller than Asia."]],
+  ];
+  V40_topic(8, "social", { id: "continents", title: "Continents & Oceans", icon: "🌍", blurb: "The 7 continents, the 5 oceans and countries.", std: "C3 D2.Geo", stdName: "C3 Geography D2.Geo.2–3: world geography",
+    intro: "Earth has 7 continents and 5 oceans. Countries are on continents. The United States is in North America.", learn: "The continents: Africa, Antarctica, Asia, Australia, Europe, North America and South America.", pics: [["🌎", "The Americas", "North and South"], ["🌍", "Europe & Africa", ""], ["🌏", "Asia & Australia", ""], ["🧊", "Antarctica", "coldest"]],
+    trick: "Picture a globe: the Americas on one side, Europe and Africa in the middle, Asia and Australia on the other side.",
+    mix: [[() => V40_match(CONT, { ab: p => `On which continent is <b>${p[0]}</b>?`, why: p => `${cap(p[0])} is in ${p[2]}.`, whyB: x => `${x[2]} is home to countries like ${x[0]}, but not this one.` }, "c8c"), 2], [() => V40_fact(CF, "c8cf"), 2]] });
+
+  const LEAD = [["mayor", "", "leads a city or town", "🏙️"], ["governor", "", "leads a state", "🗺️"], ["President", "", "leads the whole country", "🇺🇸"]];
+  const GOV = [
+    ["Who leads a state?", "The governor", ["The mayor", "The President", "The principal"], "Each state has a governor.", "🏛️", ["A mayor leads a city or town.", "The President leads the whole country.", "A principal leads a school."]],
+    ["What do taxes help pay for?", "Roads, schools, parks and firefighters", ["Only toys for adults", "Private vacations", "Video games"], "Taxes are money people pay to the government for things everyone uses.", "🛣️", ["Taxes pay for things everyone shares.", "Taxes aren't for private trips.", "Taxes don't buy video games for people."]],
+    ["Where does the national government meet?", "Washington, D.C.", ["New York City", "Los Angeles", "Chicago"], "Washington, D.C., is the capital of the United States.", "🏛️", ["New York City is the biggest city, but not the capital.", "Los Angeles is a big city in California.", "Chicago is a big city in Illinois."]],
+    ["Laws for the whole country are made by…", "Congress", ["the mayor", "a teacher", "the city zoo"], "Congress writes the national laws.", "📜", ["A mayor helps lead a city.", "Teachers make class rules, not national laws.", "Zoos don't make laws."]],
+    ["People choose their leaders by…", "voting in elections", ["drawing names from a hat", "running a race", "flipping a coin"], "In a democracy, citizens vote to choose leaders.", "🗳️", ["Leaders aren't picked from a hat.", "Races don't choose leaders.", "Coins don't choose leaders."]],
+  ];
+  V40_topic(8, "social", { id: "government", title: "Government & Leaders", icon: "🏛️", blurb: "Local, state and national government.", std: "C3 D2.Civ", stdName: "C3 Civics D2.Civ.1–6: government at different levels",
+    intro: "Government makes laws and provides services. There are three levels: local (city or town), state, and national (the whole country).", learn: "A mayor leads a city, a governor leads a state, and the President leads the country.", pics: [["🏙️", "Mayor", "city"], ["🗺️", "Governor", "state"], ["🇺🇸", "President", "country"], ["🗳️", "Voting", "choose leaders"]],
+    trick: "City → mayor, state → governor, country → President.",
+    mix: [[() => V40_match(LEAD, { ab: p => `What does the <b>${p[0]}</b> do?`, ba: p => `Who <b>${p[2]}</b>?`, why: p => `The ${p[0]} ${p[2]}.`, whyB: x => `The ${x[0]} ${x[2]}.`, whyA: x => `The ${x[0]} ${x[2]}.` }, "c8l"), 1.5], [() => V40_fact(GOV, "c8g"), 2]] });
+
+  /* computed: grid map coordinates */
+  function gridMap() {
+    const cols = ["A", "B", "C", "D"], rows = 4, pl = shuffle(PLACES8.slice()).slice(0, 5), cells = shuffle(range(0, 15)).slice(0, 5);
+    const i = R(0, 4), r = Math.floor(cells[i] / 4), c = cells[i] % 4, ans = `${cols[c]}${r + 1}`;
+    const grid = Array(16).fill(""); pl.forEach((p, k) => { grid[cells[k]] = `<span class="emo" title="${p[0]}">${p[1]}</span>`; });
+    const wrong = [`${r + 1}${cols[c]}`.length === 2 ? `${cols[r] || "A"}${c + 1}` : "", `${cols[c]}${((r + 1) % 4) + 1}`, `${cols[(c + 1) % 4]}${r + 1}`, `${cols[(c + 3) % 4]}${r + 1}`].filter((x, k, a) => x && x !== ans && a.indexOf(x) === k).slice(0, 3);
+    const whyNot = {}; wrong.forEach(w => { whyNot[w] = w[0] === cols[c] ? `The column is right, but count the rows again: the ${pl[i][0]} is in row ${r + 1}.` : w.slice(1) === String(r + 1) ? `The row is right, but look at the letter above the ${pl[i][0]}: it's ${cols[c]}.` : `Letters go across the top and numbers go down the side. Find the letter first, then the number.`; });
+    const vis = `<div class="v40-gridmap"><span></span>${cols.map(x => `<b>${x}</b>`).join("")}${range(1, rows).map(rr => `<b>${rr}</b>${range(0, 3).map(cc => `<span>${grid[(rr - 1) * 4 + cc]}</span>`).join("")}`).join("")}</div>`;
+    return V40_Q({ q: `Which square is the <b>${pl[i][0]}</b> in?`, vis, opts: shuffle([ans, ...wrong]), ans, why: `The ${pl[i][0]} is under column ${cols[c]} and across from row ${r + 1}: ${ans}.`, whyNot, key: `c8m${cells}${i}`, big: 0 });
+  }
+  const PLACES8 = [["school", "🏫"], ["park", "🌳"], ["library", "📚"], ["store", "🏪"], ["museum", "🏛️"], ["hospital", "🏥"], ["zoo", "🦁"], ["pool", "🏊"]];
+  const SCALE = [
+    ["A map scale says 1 inch = 10 miles. Two towns are 3 inches apart on the map. How far apart are they really?", "30 miles", ["3 miles", "13 miles", "10 miles"], "Each inch is 10 miles, so 3 inches = 3 × 10 = 30 miles.", "📏", ["3 is the inches on the map, not the miles.", "13 adds 3 + 10; you need 3 × 10.", "10 miles is only 1 inch."]],
+    ["A map scale says 1 inch = 5 miles. The lake is 4 inches away on the map. How many miles is that?", "20 miles", ["9 miles", "4 miles", "5 miles"], "4 inches × 5 miles = 20 miles.", "📏", ["9 adds 4 + 5; multiply instead.", "4 is the inches on the map.", "5 miles is only 1 inch."]],
+    ["What is the equator?", "An imaginary line around the middle of Earth", ["A real rope around Earth", "A mountain", "A river in Africa"], "The equator is an imaginary line halfway between the North and South Poles.", "🌍", ["You can't see or touch the equator.", "It isn't a mountain.", "It isn't a river."]],
+  ];
+  V40_topic(8, "social", { id: "mapskills", title: "Map Grids & Scales", icon: "📍", blurb: "Find places with grid squares and measure with a map scale.", std: "C3 D2.Geo", stdName: "C3 Geography D2.Geo.1: using maps and grids",
+    intro: "Many maps have a grid: letters across the top and numbers down the side. A map scale tells how far apart places really are.", learn: "To find B3, go across to column B, then down to row 3.", pics: [["🔤", "Letters", "across the top"], ["🔢", "Numbers", "down the side"], ["📍", "B3", "column B, row 3"], ["📏", "Scale", "real distance"]],
+    trick: "Letter first, then number: go across, then down.",
+    mix: [[() => gridMap(), 3], [() => V40_fact(SCALE, "c8sc"), 1]] });
+
+  const ECO = [
+    ["There are only 3 cookies and 5 kids want one. This is an example of…", "scarcity", ["a surplus", "a tax", "a vote"], "Scarcity means there isn't enough for everyone who wants it.", "🍪", ["A surplus means there's extra.", "Taxes are money paid to the government.", "A vote is a way to decide."]],
+    ["Maya has $5. She chooses a book instead of a toy. The toy is her…", "opportunity cost", ["income", "profit", "tax"], "Opportunity cost is the thing you give up when you make a choice.", "📖", ["Income is money you earn.", "Profit is money left after costs.", "A tax is paid to the government."]],
+    ["Money you earn from a job is called…", "income", ["a loan", "a budget", "a gift"], "Income is money earned by working.", "💵", ["A loan has to be paid back.", "A budget is a plan for money.", "A gift isn't earned by working."]],
+    ["A plan for how to spend and save money is a…", "budget", ["receipt", "coin", "bank"], "A budget helps you plan spending and saving.", "📝", ["A receipt shows what you already bought.", "A coin is money.", "A bank keeps money safe."]],
+  ];
+  function saveQ() {
+    const nm = pick(KIDS), w = R(2, 6), price = w * R(2, 5) + R(0, 1) * w, per = R(2, 6), weeks = Math.ceil(price / per);
+    const ans = String(weeks), opts = numU(weeks, [weeks - 1, weeks + 1, price - per, price], 2, 1), whyNot = {};
+    opts.forEach(o => { if (o === ans) return; const v = +o; whyNot[o] = v === weeks - 1 ? `After ${v} weeks, ${nm} has $${v * per}, which is less than $${price}.` : v * per >= price ? `${nm} would already have enough before week ${v}.` : `After ${v} weeks, ${nm} has $${v * per}. Keep counting by ${per}s.`; });
+    return V40_Q({ q: `${nm} saves <b>$${per} each week</b> to buy a game that costs <b>$${price}</b>. How many weeks until ${nm} has enough?`, opts, ans, why: `Count by ${per}s: ${range(1, weeks).map(k => "$" + k * per).join(", ")}. After ${weeks} weeks, ${nm} has enough.`, whyNot, key: `c8sv${nm}${per}${price}`, vis: `<div class="v27-show sm">🐷💵</div>` });
+  }
+  V40_topic(8, "social", { id: "economics", title: "Money Choices", icon: "💵", blurb: "Scarcity, choices, income, budgets and saving.", std: "C3 D2.Eco", stdName: "C3 Economics D2.Eco.1–3: scarcity, choices and saving",
+    intro: "We can't have everything we want, so we make choices. A budget is a plan for spending and saving money.", learn: "When you choose one thing, what you give up is the opportunity cost.", pics: [["🍪", "Scarcity", "not enough"], ["⚖️", "Choice", "pick one"], ["💵", "Income", "money earned"], ["🐷", "Saving", "for later"]],
+    trick: "Count up by the amount you save each week until you reach the price.",
+    mix: [[() => V40_fact(ECO, "c8e"), 2], [() => saveQ(), 2]] });
+
+  const USG = [
+    ["What is the capital of the United States?", "Washington, D.C.", ["New York City", "Philadelphia", "Boston"], "Washington, D.C., is where the national government meets.", "🏛️", ["New York City is the biggest city, not the capital.", "Philadelphia was an early capital, but not today.", "Boston is the capital of Massachusetts."]],
+    ["How many states are in the United States?", "50", ["13", "48", "100"], "There are 50 states. Alaska and Hawaii were the last two to join, in 1959.", "🇺🇸", ["13 were the first colonies.", "There were 48 before Alaska and Hawaii joined.", "There are 50, not 100."]],
+    ["Which country is north of the United States?", "Canada", ["Mexico", "Brazil", "Cuba"], "Canada is the large country to the north.", "🧭", ["Mexico is to the south.", "Brazil is in South America.", "Cuba is an island to the south."]],
+    ["Which country is south of the United States?", "Mexico", ["Canada", "England", "Japan"], "Mexico shares a border with the southern United States.", "🧭", ["Canada is to the north.", "England is across the Atlantic Ocean.", "Japan is across the Pacific Ocean."]],
+    ["Which ocean is on the west coast of the United States?", "The Pacific Ocean", ["The Atlantic Ocean", "The Arctic Ocean", "The Indian Ocean"], "The Pacific Ocean touches California, Oregon and Washington.", "🌊", ["The Atlantic is on the east coast.", "The Arctic is far north, near Alaska.", "The Indian Ocean is far away."]],
+    ["Which state is made up of islands in the Pacific Ocean?", "Hawaii", ["Alaska", "Texas", "Florida"], "Hawaii is a chain of islands in the Pacific.", "🏝️", ["Alaska is mostly a big piece of land in the far north.", "Texas is on the mainland.", "Florida is a peninsula on the mainland."]],
+    ["What are the Great Lakes?", "Five big lakes between the U.S. and Canada", ["Five oceans", "Five rivers in Texas", "Five mountains"], "The five Great Lakes are Superior, Michigan, Huron, Erie and Ontario.", "🏞️", ["Lakes are smaller than oceans.", "They aren't rivers, and they're in the north.", "They are lakes, not mountains."]],
+  ];
+  USG.push(
+
+  ["Which is the largest state by area?", "Alaska", ["Texas", "California", "Rhode Island"], "Alaska is by far the biggest state.", "🏔️", ["Texas is second biggest.", "California is third biggest.", "Rhode Island is the smallest."]],
+  ["Which is the smallest state by area?", "Rhode Island", ["Alaska", "Texas", "Florida"], "Rhode Island is the smallest state.", "📏", ["Alaska is the largest.", "Texas is very large.", "Florida is much bigger."]],
+  ["Which long river flows south through the middle of the United States?", "The Mississippi River", ["The Nile River", "The Amazon River", "The Thames River"], "The Mississippi flows from Minnesota all the way to the south.", "🏞️", ["The Nile is in Africa.", "The Amazon is in South America.", "The Thames is in England."]],
+  ["Which mountains are in the eastern United States?", "The Appalachian Mountains", ["The Rocky Mountains", "The Andes", "The Alps"], "The Appalachians run through many eastern states.", "⛰️", ["The Rockies are in the West.", "The Andes are in South America.", "The Alps are in Europe."]],
+  ["Which state is a peninsula, with water on three sides?", "Florida", ["Kansas", "Colorado", "Ohio"], "Florida sticks out into the water, with ocean on three sides.", "🏖️", ["Kansas has no ocean coast.", "Colorado has no ocean coast.", "Ohio has no ocean coast."]],
+  );
+  V40_topic(8, "social", { id: "usgeo", title: "U.S. Geography", icon: "🗺️", blurb: "States, neighbors, oceans and the capital.", std: "C3 D2.Geo", stdName: "C3 Geography D2.Geo.2–5: places and regions of the United States",
+    intro: "The United States has 50 states. Canada is to the north and Mexico is to the south. The capital is Washington, D.C.", learn: "The Atlantic Ocean is on the east coast and the Pacific Ocean is on the west coast.", pics: [["🇺🇸", "50 states", ""], ["🏛️", "Washington, D.C.", "capital"], ["🧭", "Canada", "north"], ["🌊", "Two oceans", "east and west"]],
+    trick: "Picture the map: Canada on top, Mexico on the bottom, Atlantic on the right, Pacific on the left.",
+    mix: [[() => V40_fact(USG, "c8u"), 1]] });
+}
+
+/* =================== SOCIAL STUDIES · AGE 9 (Grade 4) =================== */
+{
+  const REG = [["Florida", "", "the Southeast", ""], ["Georgia", "", "the Southeast", ""], ["New York", "", "the Northeast", ""], ["Maine", "", "the Northeast", ""], ["Ohio", "", "the Midwest", ""], ["Illinois", "", "the Midwest", ""], ["Arizona", "", "the Southwest", ""], ["New Mexico", "", "the Southwest", ""], ["California", "", "the West", ""], ["Oregon", "", "the West", ""]];
+  const RF = [
+    ["Which region is known for deserts, canyons and hot, dry weather?", "The Southwest", ["The Northeast", "The Midwest", "The Southeast"], "The Southwest has deserts and canyons, like the Grand Canyon in Arizona.", "🏜️", ["The Northeast has cold winters and old cities.", "The Midwest has flat farmland.", "The Southeast is warm and humid with beaches."]],
+    ["Which region has lots of flat farmland and is called America's “breadbasket”?", "The Midwest", ["The Southwest", "The Northeast", "The West"], "The Midwest grows a lot of corn and wheat.", "🌽", ["The Southwest is mostly dry.", "The Northeast has more cities and hills.", "The West has mountains and coast."]],
+    ["Which mountains run through the western United States?", "The Rocky Mountains", ["The Appalachian Mountains", "The Alps", "The Himalayas"], "The Rocky Mountains stretch through many western states.", "⛰️", ["The Appalachians are in the east.", "The Alps are in Europe.", "The Himalayas are in Asia."]],
+  ];
+  V40_topic(9, "social", { id: "regions", title: "U.S. Regions", icon: "🧭", blurb: "Northeast, Southeast, Midwest, Southwest and West.", std: "C3 D2.Geo", stdName: "C3 Geography D2.Geo.4–8: regions of the United States",
+    intro: "The United States is often split into five regions: the Northeast, Southeast, Midwest, Southwest and West. Each has its own land, climate and resources.", learn: "Florida is in the Southeast, Ohio in the Midwest, Arizona in the Southwest, and California in the West.", pics: [["🗽", "Northeast", "New York"], ["🌴", "Southeast", "Florida"], ["🌽", "Midwest", "farms"], ["🏜️", "Southwest", "deserts"], ["🏔️", "West", "mountains"]],
+    trick: "Picture the map: top right = Northeast, bottom right = Southeast, middle = Midwest, bottom left = Southwest, far left = West.",
+    mix: [[() => V40_match(REG, { ab: p => `Which region is <b>${p[0]}</b> in?`, why: p => `${p[0]} is in ${p[2]}.`, whyB: x => `${cap(x[2])} has states like ${x[0]}, but not this one.` }, "c9r"), 2.5], [() => V40_fact(RF, "c9rf"), 1.5]] });
+
+  const BR = [["legislative branch", "", "makes the laws (Congress)", "📜"], ["executive branch", "", "carries out the laws (the President)", "🇺🇸"], ["judicial branch", "", "decides what laws mean (the courts)", "⚖️"]];
+  const BF = [
+    ["Why does the government have three branches?", "So no one branch has too much power", ["So there are more holidays", "To make laws harder to read", "So the President can do anything"], "Checks and balances let each branch limit the others.", "⚖️", ["Branches aren't about holidays.", "That isn't the reason.", "Checks and balances stop that."]],
+    ["What is the U.S. Constitution?", "The plan for the government and the highest law", ["A kind of money", "A famous ship", "A state flag"], "The Constitution sets up the government and protects people's rights.", "📜", ["It isn't money.", "It isn't a ship.", "It isn't a flag."]],
+    ["What are the first ten amendments to the Constitution called?", "The Bill of Rights", ["The Declaration of Independence", "The Pledge of Allegiance", "The national anthem"], "The Bill of Rights protects freedoms like speech and religion.", "📜", ["The Declaration came in 1776, before the Constitution.", "The Pledge is a promise of loyalty.", "The anthem is a song."]],
+    ["Who leads the executive branch?", "The President", ["The Chief Justice", "The Speaker of the House", "The governor"], "The President is the head of the executive branch.", "🇺🇸", ["The Chief Justice leads the Supreme Court.", "The Speaker leads the House in Congress.", "A governor leads a state."]],
+    ["Congress has two parts. They are the Senate and the…", "House of Representatives", ["Supreme Court", "White House", "Cabinet"], "Congress = the Senate + the House of Representatives.", "🏛️", ["The Supreme Court is the judicial branch.", "The White House is where the President works.", "The Cabinet advises the President."]],
+  ];
+  V40_topic(9, "social", { id: "branches", title: "Three Branches", icon: "⚖️", blurb: "Legislative, executive and judicial.", std: "C3 D2.Civ", stdName: "C3 Civics D2.Civ.3–5: the U.S. Constitution and branches of government",
+    intro: "The U.S. government has three branches. Congress makes laws, the President carries them out, and the courts decide what laws mean.", learn: "Checks and balances keep any one branch from getting too much power.", pics: [["📜", "Legislative", "makes laws"], ["🇺🇸", "Executive", "carries out laws"], ["⚖️", "Judicial", "explains laws"]],
+    trick: "Make, carry out, explain: legislative, executive, judicial.",
+    mix: [[() => V40_match(BR, { ab: p => `What does the <b>${p[0]}</b> do?`, ba: p => `Which branch <b>${p[2]}</b>?`, why: p => `The ${p[0]} ${p[2]}.`, whyB: x => `The ${x[0]} ${x[2]}.`, whyA: x => `The ${x[0]} ${x[2]}.` }, "c9b"), 2], [() => V40_fact(BF, "c9bf"), 2]] });
+
+  const HIST = [
+    ["Who lived in North America before European explorers arrived?", "Many Native American nations", ["No one at all", "Only explorers from Spain", "The first U.S. presidents"], "Native American nations lived across North America for thousands of years, each with its own culture.", "🏕️", ["Many Native nations lived here for thousands of years.", "Explorers came much later.", "Presidents came much later."]],
+    ["Native nations of the Great Plains often lived in tipis. Why were tipis useful?", "They could be packed up to follow the buffalo", ["They were made of bricks", "They floated on water", "They had electricity"], "Plains nations moved to follow buffalo herds, so portable tipis made sense.", "🏕️", ["Tipis were made of poles and hides, not bricks.", "Tipis weren't boats.", "There was no electricity long ago."]],
+    ["The Pueblo peoples of the Southwest built homes from…", "adobe (sun-dried clay bricks)", ["snow blocks", "palm leaves", "steel"], "Adobe stays cool in the hot desert.", "🏜️", ["Snow blocks are for very cold places.", "Palm leaves are used in tropical places.", "Steel wasn't used long ago."]],
+    ["In what year was the Declaration of Independence signed?", "1776", ["1492", "1620", "1865"], "The Declaration of Independence was adopted on July 4, 1776.", "📜", ["1492 is when Columbus sailed.", "1620 is when the Mayflower arrived.", "1865 is when the Civil War ended."]],
+    ["Who was the first President of the United States?", "George Washington", ["Abraham Lincoln", "Thomas Jefferson", "Benjamin Franklin"], "George Washington became the first President in 1789.", "🇺🇸", ["Lincoln was the 16th President.", "Jefferson was the 3rd President.", "Franklin was never President."]],
+    ["The Pilgrims sailed to America in 1620 on a ship called the…", "Mayflower", ["Titanic", "Santa María", "Liberty Bell"], "The Mayflower brought the Pilgrims to Plymouth.", "⛵", ["The Titanic sailed in 1912.", "The Santa María was Columbus's ship.", "The Liberty Bell is a bell, not a ship."]],
+    ["How many colonies joined together to become the United States?", "13", ["50", "7", "3"], "The 13 colonies declared independence from Great Britain.", "🇺🇸", ["There are 50 states today.", "There were more than 7.", "There were more than 3."]],
+  ];
+  HIST.push(
+
+  ["Native nations of the Northeast, like the Haudenosaunee, lived in long wooden houses called…", "longhouses", ["igloos", "skyscrapers", "castles"], "Longhouses were long homes shared by several families.", "🏠", ["Igloos are snow houses from the far north.", "Skyscrapers are modern buildings.", "Castles were built in Europe."]],
+  ["Whose ships reached the Americas in 1492?", "Christopher Columbus's", ["George Washington's", "Neil Armstrong's", "Abraham Lincoln's"], "Columbus sailed from Spain and reached the Caribbean in 1492.", "⛵", ["Washington lived in the 1700s.", "Armstrong walked on the moon in 1969.", "Lincoln lived in the 1800s."]],
+  ["Who wrote most of the Declaration of Independence?", "Thomas Jefferson", ["George Washington", "Abraham Lincoln", "Benjamin Franklin"], "Thomas Jefferson wrote the first draft in 1776.", "📜", ["Washington led the army.", "Lincoln lived much later.", "Franklin helped edit it, but Jefferson wrote most of it."]],
+  ["The colonists fought the American Revolution to…", "be free from British rule", ["join Spain", "stop farming", "move to Canada"], "The colonists wanted to govern themselves.", "🇺🇸", ["They wanted independence, not to join Spain.", "Farming wasn't the reason.", "They wanted their own country."]],
+  ["Native people helped the Pilgrims learn how to…", "grow corn", ["fly kites", "drive cars", "use computers"], "Native people, like Tisquantum (Squanto) of the Wampanoag region, showed the Pilgrims how to grow corn.", "🌽", ["Kites weren't the lesson.", "There were no cars then.", "There were no computers then."]],
+  ["Benjamin Franklin is famous for experiments with…", "electricity", ["airplanes", "telephones", "rockets"], "Franklin's famous kite experiment showed lightning is electricity.", "⚡", ["Airplanes came in 1903.", "Telephones came in the 1870s.", "Rockets came much later."]],
+  );
+  V40_topic(9, "social", { id: "earlyamerica", title: "Early America", icon: "🏕️", blurb: "Native nations, colonies and a new country.", std: "C3 D2.His", stdName: "C3 History D2.His.1–3: early American history",
+    intro: "Native American nations lived across North America for thousands of years. Later, colonists came from Europe, and in 1776 the 13 colonies declared independence.", learn: "Homes fit the land: tipis on the Plains, adobe pueblos in the Southwest, and longhouses in the Northeast.", pics: [["🏕️", "Tipi", "Plains nations"], ["🏜️", "Adobe", "Pueblo peoples"], ["⛵", "Mayflower", "1620"], ["📜", "Declaration", "1776"]],
+    trick: "Put events on a timeline: Native nations first, then explorers, colonies, and independence in 1776.",
+    mix: [[() => V40_fact(HIST, "c9h"), 1]] });
+
+  /* computed: timelines */
+  const EV = [[1492, "Columbus sails to the Americas"], [1620, "The Mayflower arrives"], [1776, "The Declaration of Independence"], [1789, "Washington becomes President"], [1803, "The Louisiana Purchase"], [1865, "The Civil War ends"], [1903, "The first airplane flight"], [1969, "People walk on the moon"]];
+  function timeline() {
+    const m = pick(["between", "first", "order"]);
+    if (m === "between") {
+      const [a, b] = shuffle(EV.slice()).slice(0, 2).sort((x, y) => x[0] - y[0]), d = b[0] - a[0];
+      const opts = numU(d, [d + 10, d - 10, d + 100, a[0] + b[0] > 4000 ? d + 1 : d - 1].filter(x => x > 0), 2, 1), ans = String(d), whyNot = {};
+      opts.forEach(o => { if (o !== ans) whyNot[o] = `Subtract the years: ${b[0]} − ${a[0]} = ${d}.`; });
+      return V40_Q({ q: `How many years passed between <b>${a[1]}</b> (${a[0]}) and <b>${b[1]}</b> (${b[0]})?`, vis: `<div class="v40-tl"><span>${a[0]}</span><i></i><span>${b[0]}</span></div>`, opts, ans, why: `${b[0]} − ${a[0]} = ${d} years.`, whyNot, key: `c9t${a[0]}${b[0]}` });
+    }
+    const four = shuffle(EV.slice()).slice(0, 4), sorted = four.slice().sort((x, y) => x[0] - y[0]);
+    const ask = m === "first" ? "happened FIRST" : "happened LAST", tgt = m === "first" ? sorted[0] : sorted[3], whyNot = {};
+    four.forEach(e => { if (e !== tgt) whyNot[e[1]] = `That was in ${e[0]}. ${m === "first" ? `${tgt[0]} is earlier.` : `${tgt[0]} is later.`}`; });
+    return V40_Q({ q: `Which event happened <b>${m === "first" ? "FIRST" : "LAST"}</b>? <small>(Use the years.)</small>`, say: `Which event happened ${m === "first" ? "first" : "last"}? Use the years.`, vis: `<div class="v40-evs">${four.map(e => `<span><b>${e[0]}</b> ${e[1]}</span>`).join("")}</div>`, opts: shuffle(four.map(e => e[1])), ans: tgt[1], why: `“${tgt[1]}” was in ${tgt[0]}, the ${m === "first" ? "earliest" : "latest"} year.`, whyNot, key: `c9to${four.map(e => e[0])}${m}` });
+  }
+  const SRC = [
+    ["A diary written by a soldier in 1776 is a…", "primary source", ["secondary source", "map key", "fiction story"], "A primary source was made by someone who was there.", "📔", ["A secondary source is written later by someone who wasn't there.", "A map key explains map symbols.", "A real diary isn't fiction."]],
+    ["A textbook chapter about the Revolution written last year is a…", "secondary source", ["primary source", "diary", "photograph from 1776"], "Secondary sources are written later, about events the author didn't see.", "📘", ["A primary source comes from someone who was there.", "A diary is usually a primary source.", "There were no photographs in 1776."]],
+  ];
+  V40_topic(9, "social", { id: "timelines", title: "Timelines & Sources", icon: "📜", blurb: "Order events, count years and use sources.", std: "C3 D2.His", stdName: "C3 History D2.His.1, D2.His.9–10: chronology and sources",
+    intro: "A timeline shows events in order. To find how many years apart two events are, subtract the earlier year from the later year.", learn: "A primary source comes from someone who was there, like a diary. A secondary source is written later.", pics: [["📅", "Timeline", "events in order"], ["➖", "Subtract", "later − earlier"], ["📔", "Diary", "primary source"], ["📘", "Textbook", "secondary source"]],
+    trick: "Smaller year = earlier. Bigger year = later. Subtract to find the years between.",
+    mix: [[() => timeline(), 3], [() => V40_fact(SRC, "c9s"), 1]] });
+
+  function budget() {
+    const nm = pick(KIDS), items = shuffle([["a book", R(4, 9)], ["a snack", R(2, 4)], ["a movie ticket", R(8, 12)], ["art supplies", R(5, 10)], ["a gift for a friend", R(6, 11)]]).slice(0, 2), spent = items[0][1] + items[1][1], inc = (Math.ceil((spent + 3) / 5) + R(0, 4)) * 5, left = inc - spent;
+    const ans = "$" + left, opts = [ans, "$" + (inc + spent), "$" + spent, "$" + (left + 1)].filter((x, i, a) => a.indexOf(x) === i), whyNot = {};
+    opts.forEach(o => { if (o === ans) return; const v = +o.slice(1); whyNot[o] = v === spent ? `$${spent} is how much ${nm} spent. Subtract it from $${inc}.` : v === inc + spent ? `Spending takes money away, so subtract instead of adding.` : `Check the math: $${inc} − $${items[0][1]} − $${items[1][1]} = $${left}.`; });
+    return V40_Q({ q: `${nm} earns <b>$${inc}</b>. ${nm} spends <b>$${items[0][1]}</b> on ${items[0][0]} and <b>$${items[1][1]}</b> on ${items[1][0]}. How much is left to save?`, opts: shuffle(opts), ans, why: `$${items[0][1]} + $${items[1][1]} = $${spent} spent. $${inc} − $${spent} = $${left} left to save.`, whyNot, key: `c9b${inc}${items.map(x => x[1])}`, vis: `<div class="v27-show sm">💵📝</div>` });
+  }
+  const BUD = [
+    ["When demand for a toy goes up but there are only a few, the price usually…", "goes up", ["goes down", "becomes free", "never changes"], "When many people want something scarce, sellers can charge more.", "📈", ["Prices usually drop when there's a lot and few want it.", "Sellers still charge for it.", "Prices change with supply and demand."]],
+    ["A business that makes goods to sell is a…", "producer", ["consumer", "voter", "tourist"], "Producers make goods or provide services.", "🏭", ["Consumers buy goods.", "Voting is about government.", "Tourists visit places."]],
+    ["Countries trade so they can…", "get things they can't easily make themselves", ["stop making anything", "keep everything secret", "make money disappear"], "Trade lets countries share what they make best.", "🚢", ["Trading countries still make goods.", "Trade means sharing goods.", "Trade doesn't make money disappear."]],
+  ];
+  V40_topic(9, "social", { id: "budget", title: "Budgets & Trade", icon: "💰", blurb: "Income, spending, saving, supply and demand.", std: "C3 D2.Eco", stdName: "C3 Economics D2.Eco.1–3, D2.Eco.14: budgets, markets and trade",
+    intro: "A budget compares income (money coming in) with expenses (money going out). What's left can be saved.", learn: "Prices often go up when many people want something and there isn't much of it.", pics: [["💵", "Income", "money in"], ["🧾", "Expenses", "money out"], ["🐷", "Savings", "what's left"], ["🚢", "Trade", "sharing goods"]],
+    trick: "Add up what you spend, then subtract it from what you earn.",
+    mix: [[() => budget(), 2.5], [() => V40_fact(BUD, "c9bd"), 1.5]] });
+}
+
 whyNotManners(6, "animals", {
   "You see a dog you don't know at the park.": ["A dog you don't know might get scared and jump or nip.","Grabbing a dog's tail hurts, and it might bite.","Chasing a dog can scare it, and it may chase or nip back."],
   "A dog is growling and showing its teeth.": ["A growling dog wants space, and it might bite if you touch it.","Running and screaming can make a scared dog chase you.","Staring and yelling can make an upset dog feel more angry."],
@@ -32378,7 +33131,7 @@ function questionScript(q) {
 const DEFAULTS = { v: 5, ai: true, voiceName: "", timer: "auto", count: 20, sound: true, voice: true, ticking: true, autonext: true, pause: 5, rate: 0.9, muted: false, pace: "relaxed", readOpts: true, explainOv: true };
 const AUTO_TIMER = { 6: 35, 7: 32, 8: 30, 9: 25 };
 const RATES = [[0.45, "Very very slow", "🦥"], [0.6, "Very slow", "🐌"], [0.75, "Slow", "🐢"], [0.9, "Normal", "🙂"], [1.05, "Fast", "🐇"], [1.2, "Super fast", "🚀"]];
-const SUBJ = { english: { name: "Reading & English", short: "English", icon: "📖", sub: "Phonics, words and reading" }, math: { name: "Math", short: "Math", icon: "🧮", sub: "Numbers, shapes and time" }, logic: { name: "Logical Thinking", short: "Logic", icon: "🧩", sub: "Puzzles, patterns and brain games" }, manners: { name: "Manners & Behavior", short: "Behavior", icon: "🌟", sub: "Kindness, good choices, feelings and safety" } };
+const SUBJ = { english: { name: "Reading & English", short: "English", icon: "📖", sub: "Phonics, words and reading" }, math: { name: "Math", short: "Math", icon: "🧮", sub: "Numbers, shapes and time" }, science: { name: "Science", short: "Science", icon: "🔬", sub: "Living things, earth, space and how things work" }, social: { name: "Social Studies", short: "Social Studies", icon: "🌎", sub: "Communities, maps, history and money" }, logic: { name: "Logical Thinking", short: "Logic", icon: "🧩", sub: "Puzzles, patterns and brain games" }, manners: { name: "Manners & Behavior", short: "Behavior", icon: "🌟", sub: "Kindness, good choices, feelings and safety" } };
 const STICKERS = ["🦄", "🐉", "🦖", "🐙", "🦋", "🐢", "🦊", "🐼", "🐨", "🦁", "🐯", "🐸", "🐵", "🦉", "🐧", "🐬", "🦈", "🐳", "🦒", "🦓", "🦔", "🦜", "🦩", "🐝", "🐞", "🌈", "🚀", "🛸", "🌟", "🪐", "☄️", "🎈", "🎨", "🎸", "🥁", "🏆", "👑", "💎", "🍩", "🍦", "🧁", "🍕", "⚽", "🏀", "🎯", "🚂", "🚁", "🏰"];
 const LEVELS = [[0, "Little Sprout", "🌱"], [6, "Curious Cub", "🐻"], [18, "Brave Explorer", "🧭"], [40, "Super Star", "⭐"], [80, "Rocket Genius", "🚀"], [140, "Learning Legend", "👑"]];
 const BREAKS = [["Stretch up high like a giraffe!", "🦒"], ["Wiggle your fingers!", "🖐️"], ["Give yourself a high five!", "✋"], ["Take a big balloon breath!", "🎈"], ["Do a silly dance!", "💃"], ["Roar like a lion!", "🦁"], ["Flap your arms like a bird!", "🐦"], ["Hop like a bunny three times!", "🐰"]];
@@ -33137,12 +33890,13 @@ function showQuestion() {
   prepQ(q, t, lvl);
   const src = srcTopic(q, t), age = (src && src.age) || t.age || 7;
   const base = timerSeconds(age), secs = q.calm ? 0 : levelSecs(base ? base + (q.extra || 0) : 0, lvl, q);
+  Q.helpStep = 0; Q.out = []; Q.helpPlan = null;
   Q.waiting = false; Q.early = 0; Q.lockIn = false; Q.pend = null; Q.firstPick = null; Q.rethink = false;
   const listenOnly = !!q.listen && window.voiceOn();
   Q.locked = false; Q.token++; Q.secs = secs; Q.started = Date.now(); Q.hinted = false; Q.lastText = null; KS = null;
   const big = q.big ? " big" : "", now = pctOf(Q.i), mc = !q.kind || q.kind === "count";
   const links = src ? `<button class="btn btn-sm" data-go="age-${src.age}-${src.subj}-${src.id}-learn">📖 Learn ${t.special ? `“${src.title}”` : "it again"}</button>` : "";
-  const hintOK = lvl !== "challenge" && src && typeof trickFor === "function";
+  const hintOK = true; /* v39: Help is on every question */
   setTimeout(() => { try { v32TrackCheer(n); } catch (e) { } }, 900);
   app.innerHTML = `
   <div class="quiz-top">
@@ -33162,7 +33916,7 @@ function showQuestion() {
     </div>
   </div>
   <div class="q-card q-in kind-${q.kind || "mc"}">
-    <div class="q-head"><div class="q-num">${Q.i + 1}<small>/${n}</small></div><div class="q-text">${listenOnly ? `<span class="v27-listen">👂 Listen to Pip!</span> <button class="btn btn-sm v27-again" data-act="sayq">🔊 Hear it again</button>` : q.q}</div><div class="q-btns"><button class="icon-btn" data-act="sayq" aria-label="Read the question to me">🔊</button>${hintOK ? `<button class="icon-btn" data-act="hint" aria-label="Get a hint" title="Hint">💡</button>` : ""}</div></div>
+    <div class="q-head"><div class="q-num">${Q.i + 1}<small>/${n}</small></div><div class="q-text">${listenOnly ? `<span class="v27-listen">👂 Listen to Pip!</span> <button class="btn btn-sm v27-again" data-act="sayq">🔊 Hear it again</button>` : q.q}</div><div class="q-btns"><button class="icon-btn" data-act="sayq" aria-label="Read the question to me">🔊</button>${hintOK ? `<button class="icon-btn help-btn" data-act="hint" aria-label="Help: get a hint" title="Help">💡<small>Help</small></button>` : ""}</div></div>
     ${t.special && src ? `<div class="q-src">${SUBJ[src.subj].icon} ${src.title} · Age ${src.age}</div>` : ""}
     <div id="hint-box"></div>
     <div class="q-body${q.vis ? " has-vis" : ""}">
@@ -33254,12 +34008,66 @@ function v27Early(k) {
   const turtle = el && el.classList.contains("v38-turtle");
   if (Q.early === 1) { toast(turtle ? "🐢 Slow down! Let the turtle finish." : "🚦 Wait for green!"); try { speak(heyKid(turtle ? "slow down. Let the turtle finish walking." : "wait for the green light."), true, null, { mood: "teach" }); } catch (e) { } }
 }
+/* v39: Help. Stops the clock, then gives hints one step at a time, never the answer:
+   1) a way to think about this question, 2) cross out a wrong answer (and why), 3) cross out another. */
+function v39HelpPlan(q, src) {
+  const steps = [], plain = s => xPlain(String(s || "")), ansP = plain(q.ans).trim();
+  const mc = Array.isArray(q.opts) && !q.kind;
+  /* step 1: how to think about it */
+  let think = [];
+  const qt = String(q.q || ""), words = (qt.match(/<b>([^<]{2,24})<\/b>/g) || []).map(x => x.replace(/<\/?b>/g, "")).concat(qt.match(/\b(NOT|ONLY|FIRST|LAST|SECOND|EXACTLY|SAME|OPPOSITE|SMALLEST|BIGGEST|FEWEST|MOST|LEAST|EXCEPT|BEST|MORE|FEWER|LEFT)\b/g) || []);
+  const key = words.map(w => w.trim()).find(w => /^[A-Z ]{2,}$/.test(w) || /\b(not|only|first|last|same|opposite|best|more|fewer|left|smallest|biggest)\b/i.test(w));
+  if (key) think.push(`Look at the important word${/ /.test(key) ? "s" : ""}: <b>${esc(key)}</b>. ${/not|except/i.test(key) ? "It means you look for the one that does NOT fit." : /only/i.test(key) ? "Only count or pick that one kind." : /first|last|second/i.test(key) ? "Think about the order." : /same|exactly/i.test(key) ? "Check every part, one at a time." : /opposite/i.test(key) ? "Think of the word that means the other way." : "Think about what it asks."}`);
+  let ex = null; try { ex = xoExprIn(q, plain(q.say || q.q) + " " + plain(q.vis || "")); } catch (e) { }
+  if (ex && ex.op === "+") think.push(`Start with the bigger number, ${Math.max(ex.a, ex.b)}, and count on ${Math.min(ex.a, ex.b)} more.${ex.a > 9 || ex.b > 9 ? " Or add the tens first, then the ones." : ""}`);
+  else if (ex && ex.op === "−") think.push(`Start at ${ex.a} and count back ${ex.b}. Or think: ${ex.b} + what makes ${ex.a}?`);
+  else if (ex && ex.kind === "array") think.push(`Think of ${ex.a} groups with ${ex.b} in each group. Skip-count by ${ex.b}, ${ex.a} times.`);
+  else if (ex && ex.kind === "share") think.push(`Share ${ex.a} into ${ex.b} equal groups. Or think: ${ex.b} × what = ${ex.a}?`);
+  if (q.listen) think.push("Tap 🔊 to hear Pip say it again. Make a picture in your mind.");
+  else if (q.vis && !ex) think.push("Look closely at the picture. Point to each part with your finger.");
+  let tip = ""; try { tip = src && typeof trickFor === "function" ? trickFor(src) : ""; } catch (e) { }
+  if (tip) think.push(`Remember: ${tip}`);
+  if (!think.length) think.push("Read the question again slowly. Then look at every answer before you choose.");
+  steps.push({ t: "think", html: think.slice(0, 2).join("<br>") });
+  /* steps 2–3: cross out wrong answers (always leave at least 2) */
+  if (mc && q.opts.length >= 3) {
+    const wrong = q.opts.map((o, k) => k).filter(k => q.opts[k] !== q.ans);
+    const cuts = shuffle(wrong).slice(0, Math.min(2, q.opts.length - 2));
+    for (const k of cuts) {
+      let r = ""; try { const w = wrongReason(Object.assign(JSON.parse(JSON.stringify(q)), {}), k, null, src); r = w && w.reason ? String(w.reason) : ""; } catch (e) { }
+      /* never let the reason give the answer away */
+      const rp = xPlain(r).toLowerCase(), a = ansP.toLowerCase();
+      const leaks = /(right|correct) answer|than the answer|the answer is|should be|it'?s really|the real answer/i.test(rp) || a && (/^\d[\d,.]*$/.test(a) ? new RegExp(`(^|[^\\d])${a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([^\\d]|$)`).test(rp) : rp.includes(a));
+      steps.push({ t: "cut", k, html: `It's <b>not</b> ${q.opts[k]}.${r && !leaks ? ` <span class="h-why">${esc(xStrip(r))}</span>` : ""}` });
+    }
+  }
+  return steps;
+}
 function showHint() {
-  if (!Q || Q.locked || Q.hinted) return;
-  const q = Q.qs[Q.i], src = srcTopic(q, Q.t); if (!src) return;
-  Q.hinted = true; const tip = trickFor(src);
-  const box = document.getElementById("hint-box"); if (box) box.innerHTML = `<div class="hint-card"><span class="emo">💡</span><span>${tip}</span></div>`;
-  sfx("pop"); sayLocked(`Here's a hint. ${tip}`, { mood: "teach" });
+  if (!Q || Q.locked) return;
+  const q = Q.qs[Q.i], src = srcTopic(q, Q.t);
+  if (!Q.helpPlan) Q.helpPlan = v39HelpPlan(q, src);
+  const plan = Q.helpPlan;
+  /* the clock stops for the rest of this question */
+  if (Q.secs && document.getElementById("timer")) { stopTimer(); Q.secs = 0; Q.paused = false; document.body.classList.remove("hurry"); const tb = document.getElementById("timer"); tb.classList.add("paused", "helped"); tb.classList.remove("warn", "mid"); const tn = document.getElementById("tnum"); if (tn) tn.textContent = "⏸"; tb.setAttribute("aria-label", "The clock is stopped while you get help"); }
+  if (Q.helpStep >= plan.length) { toast("That's all the help for this one. You can do it! 💪"); return; }
+  const st = plan[Q.helpStep++]; Q.hinted = true;
+  if (st.t === "cut") {
+    Q.out.push(st.k);
+    const b = document.querySelector(`.q-right .opt[data-opt="${st.k}"]`);
+    if (b) { b.classList.add("out"); b.disabled = true; b.setAttribute("aria-label", "Crossed out: not the answer"); }
+  }
+  const box = document.getElementById("hint-box");
+  if (box) {
+    const more = Q.helpStep < plan.length;
+    box.innerHTML = `<div class="help-card"><div class="help-top"><b>💡 Help</b><span class="help-dots">${plan.map((_, i) => `<i class="${i < Q.helpStep ? "on" : ""}"></i>`).join("")}</span>${Q.helpStep === 1 && document.getElementById("timer") ? `<small>⏸ The clock is stopped. Take your time!</small>` : ""}</div>
+      ${plan.slice(0, Q.helpStep).map((s, i) => `<div class="help-step${i === Q.helpStep - 1 ? " new" : ""}"><span class="help-n">${i + 1}</span><span>${s.html}</span></div>`).join("")}
+      ${more ? `<button type="button" class="btn btn-sm help-more" data-act="hint">💡 I need another hint</button>` : `<small class="help-end">You've got this! Look at the answers that are left. 💪</small>`}</div>`;
+  }
+  const hb = document.querySelector('.q-btns [data-act="hint"]'); if (hb && Q.helpStep >= plan.length) hb.classList.add("used");
+  sfx("pop");
+  const say = xStrip(st.html.replace(/<span class="h-why">/, " ")).replace(/\s+/g, " ").trim();
+  sayLocked(Q.helpStep === 1 ? `Here's some help. ${say}` : say, { mood: "teach" });
 }
 function startTimer(secs) {
   Q.tSecs = secs; Q.tLeft = secs * 1000; Q.paused = false; Q.lastSec = null;
@@ -33291,6 +34099,7 @@ const YAY = ["Great job!", "You got it!", "Super!", "Awesome!", "Well done!", "B
 function answer(k, kres) {
   if (!Q || Q.locked || Q.reading || PAUSED) return;
   if (Q.waiting) { v27Early(k); return; }
+  if (k != null && Q.out && Q.out.includes(k)) return;
   if (Q.qs[Q.i].confirm && k != null && !kres && !Q.lockIn) { v28Confirm(k); return; }
   document.getElementById("v28-confirm")?.remove();
   Q.locked = true; Q.lastPick = kres ? null : k; stopTimer();
@@ -36957,6 +37766,8 @@ function gradeOf(t) {
   const g = GRADE[t.age];
   if (t.subj === "math") { const d = MATH_DOM[t.id] || "OA", full = /\./.test(d) ? d : `${g}.${d}`, dom = full.split(".")[1]; return { g, code: full, name: `CCSS Math ${full}: ${MATH_NAME[dom]}${full[0] !== String(g) ? " (from another grade)" : ""}` }; }
   if (t.subj === "english") { const d = ENG_DOM[t.id] || "L"; return { g, code: `${d}.${g}`, name: `CCSS ELA ${d}.${g}: ${ENG_NAME[d]}` }; }
+  if (t.subj === "science") return { g, code: t.std || "NGSS", name: t.stdName || "Next Generation Science Standards" };
+  if (t.subj === "social") return { g, code: (t.std || "C3").replace("C3 ", ""), name: t.stdName || "C3 Framework for Social Studies" };
   if (t.subj === "logic") return { g, code: "Reasoning", name: "Thinking skills: supports the CCSS Mathematical Practices (reason, look for patterns and structure)" };
   const d = SEL_DOM[t.id] || "SAFE"; return { g, code: d === "SAFE" ? "Safety" : "SEL", name: d === "SAFE" ? "Health & safety" : `Social-emotional learning (CASEL): ${SEL_NAME[d]}` };
 }
@@ -37512,6 +38323,7 @@ function xoKind(q, t) {
   const subj = t ? t.subj : "", id = t ? t.id : "", txt = xPlain(q.say || q.q), ans = xPlain(q.ans);
   if (q.kind && q.kind !== "count") return "plain";
   if (q.v27) return q.v27.xo || "reveal";
+  if (q.v40) return q.v40.xo || "reveal";
   if (subj === "manners") return XO_STAMP.test(ans) ? "stamp" : /best thing to do|best choice|what should|best way/i.test(txt) ? "manners" : /which one is/i.test(txt) ? "whichone" : "reveal";
   const vt = xPlain(q.vis || "");
   if (/class="passage(?!\s+scene)/.test(q.vis || "") && vt.length > 140) return "passage";
