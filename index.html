@@ -1331,6 +1331,14 @@ button,label,select,summary,[data-go],[data-act],.opt,.tab,.topic,.age-card,.sto
 @keyframes v28breath{0%,100%{transform:scale(1)}50%{transform:scale(1.6)}}
 .v28-say{font-family:var(--display);font-weight:700;font-size:26px;color:var(--ink);min-height:34px}
 .v28-count{color:var(--muted);font-size:15px}
+/* v30: story page dots you can tap; name sound controls */
+.sr-dots{gap:2px;flex-wrap:wrap;justify-content:center}
+.sr-dot{border:0;background:none;padding:9px 6px;cursor:pointer;border-radius:999px;display:inline-flex;align-items:center;justify-content:center}
+.sr-dot:hover span:not(.on),.sr-dot:focus-visible span:not(.on){background:var(--age);opacity:.7}
+.sr-dot:focus-visible{outline:3px solid var(--age);outline-offset:1px}
+.sr-dot span{width:14px;height:14px}
+.ns-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ns-file{cursor:pointer}
 /* v26: name prompt */
 .na-ov{position:fixed;inset:0;z-index:95;background:rgba(29,43,79,.6);display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto;animation:fadeIn .25s ease}
 .na-card{background:#fff;border-radius:28px;box-shadow:0 18px 50px rgba(29,43,79,.35);width:min(460px,100%);padding:24px 22px;display:flex;flex-direction:column;align-items:stretch;gap:12px;text-align:center;animation:xoUp .35s cubic-bezier(.2,1.3,.4,1)}
@@ -1400,7 +1408,7 @@ button,label,select,summary,[data-go],[data-act],.opt,.tab,.topic,.age-card,.sto
       <small class="hint">Buttons to move on stay gray until Pip finishes explaining, at either pace.</small>
     </div>
     <div class="toggle-row"><label for="set-explainov">Pip shows each answer on a big animated screen (and explains wrong answers with a picture)</label><input type="checkbox" class="switch" id="set-explainov"></div>
-    <p class="app-ver">Version 2026-11-19c · "Listen carefully" before every question</p>
+    <p class="app-ver">Version 2026-11-19e · light: 1.5 s red, 1.5 s yellow, then green</p>
     <div class="toggle-row"><label for="set-readopts">Pip reads each answer choice aloud before kids answer</label><input type="checkbox" class="switch" id="set-readopts"></div>
     <div class="toggle-row"><label for="set-autonext">Go to the next question by itself</label><input type="checkbox" class="switch" id="set-autonext"></div>
     <div class="field">
@@ -1419,6 +1427,9 @@ button,label,select,summary,[data-go],[data-act],.opt,.tab,.topic,.age-card,.sto
     </div>
     <h3 class="set-h" id="child-h">For this child</h3>
     <div class="field"><label for="set-kidname">Child's name</label><input id="set-kidname" maxlength="20" autocomplete="off" placeholder="First name, e.g. Ismail"><small class="hint">Pip says the name before explaining, like “Ismail, listen carefully and pay attention.”</small></div>
+    <div class="field"><label>🎙️ How Pip says the name</label>
+      <div class="ns-row"><button class="btn btn-sm" type="button" id="ns-play">▶ Hear it</button><button class="btn btn-sm" type="button" id="ns-rec">🎙️ Record</button><label class="btn btn-sm ns-file">📁 Use a sound file<input type="file" id="ns-file" accept="audio/*" hidden></label><button class="btn btn-sm" type="button" id="ns-tts">🤖 Computer voice</button></div>
+      <small class="hint" id="ns-hint">Record the name, or pick a short sound file, and Pip will play it whenever he says the name.</small></div>
     <div id="child-prefs"></div>
     <div class="reset-box">
       <button class="btn btn-sm" data-act="reset-ask">Clear this child's stars and stickers</button>
@@ -32173,7 +32184,7 @@ function speak(t, force, onend, opts = {}) {
   if (!hasSpeech || settings.muted || (!force && !settings.voice)) { if (onend) setTimeout(fin, 0); return; }
   try {
     const wasBusy = (speechSynthesis.speaking || speechSynthesis.pending) && Date.now() - unlockAt > 1500;
-    speechSynthesis.cancel();
+    speechSynthesis.cancel(); nameAudioStop();
     if (!voice) pickVoice();
     const txt = forSpeech(clean(t)), sents = splitParts(txt), rm = opts.rate || 1, base = opts.mood || "plain", queue = [];
     sents.forEach((sent, si) => {
@@ -32189,7 +32200,8 @@ function speak(t, force, onend, opts = {}) {
         else { pitch += 0.03; }
         pitch += (Math.random() - 0.5) * 0.04;
         const gap = !lastInSent ? (/[;:]$/.test(p) ? 220 : 140) : si === sents.length - 1 ? 0 : end === "?" ? 420 : end === "!" ? 320 : 360;
-        queue.push({ p, pitch: Math.max(0.7, Math.min(1.4, pitch)), rate: Math.max(0.4, Math.min(1.6, settings.rate * rm * rate * pace().rate)), gap: gap * pace().gap / Math.max(0.6, settings.rate), si, first: pi === 0 });
+        const segs = nameSplit(p), pr = Math.max(0.7, Math.min(1.4, pitch)), rt = Math.max(0.4, Math.min(1.6, settings.rate * rm * rate * pace().rate));
+        segs.forEach((sg, gi) => queue.push(Object.assign({ p: typeof sg === "string" ? sg : kidName(), pitch: pr, rate: rt, gap: gi === segs.length - 1 ? gap * pace().gap / Math.max(0.6, settings.rate) : 60, si, first: pi === 0 && gi === 0 }, typeof sg === "string" ? {} : { name: 1 })));
       });
     });
     /* SPK holds the running speech so the Pause button can stop it and resume at the same phrase */
@@ -32198,8 +32210,20 @@ function speak(t, force, onend, opts = {}) {
       if (tok !== speechTok || S !== SPK) return;
       if (PAUSED) { S.waiting = true; return; }
       if (S.i >= queue.length) { S.cur = -1; fin(); return; }
-      const idx = S.i++, c = queue[idx], u = new SpeechSynthesisUtterance(c.p), gen = S.gen;
+      const idx = S.i++, c = queue[idx], gen = S.gen;
       S.cur = idx;
+      if (c.name) {
+        /* the child's name: play the recording; if it can't play, the computer voice says it */
+        const a = nameAudio(); let movedA = false;
+        const goA = () => { if (movedA || gen !== S.gen) return; movedA = true; pClear(guardA); if (a) { a.onended = null; a.onerror = null; } S.cur = -1; if (tok === speechTok) pTimeout(next, c.gap); };
+        const guardA = pTimeout(goA, 3500);
+        if (c.first && opts.onPart) { if (tok === speechTok && gen === S.gen) opts.onPart(c.si); }
+        const viaVoice = () => { if (movedA) return; try { const u2 = new SpeechSynthesisUtterance(c.p); if (voice) { u2.voice = voice; u2.lang = voice.lang; } else u2.lang = "en-US"; u2.pitch = c.pitch; u2.rate = c.rate; u2.onend = goA; u2.onerror = goA; speechSynthesis.speak(u2); } catch (e) { goA(); } };
+        if (!a) { viaVoice(); return; }
+        try { a.currentTime = 0; a.onended = goA; a.onerror = () => { a.onerror = null; viaVoice(); }; const pr = a.play(); if (pr && pr.catch) pr.catch(() => viaVoice()); } catch (e) { viaVoice(); }
+        return;
+      }
+      const u = new SpeechSynthesisUtterance(c.p);
       if (voice) { u.voice = voice; u.lang = voice.lang; } else u.lang = "en-US";
       u.pitch = c.pitch; u.rate = c.rate; u.volume = 1;
       let moved = false;
@@ -32210,14 +32234,60 @@ function speak(t, force, onend, opts = {}) {
       speechSynthesis.speak(u);
     };
     S.next = next;
-    S.interrupt = () => { if (S.cur >= 0) { S.gen++; S.i = S.cur; S.cur = -1; S.waiting = true; } };
+    S.interrupt = () => { if (S.cur >= 0) { S.gen++; S.i = S.cur; S.cur = -1; S.waiting = true; nameAudioStop(); } };
     if (speechSynthesis.paused) try { speechSynthesis.resume(); } catch (e) { }
     /* start in the same tick when idle: iPhone/iPad only allow speech that starts directly from a tap */
     if (wasBusy) pTimeout(next, 120); else next();
     if (onend) pTimeout(() => { if (tok === speechTok) fin(); }, Math.max(4000, txt.length * 95 / (settings.rate * rm) + queue.length * 500));
   } catch (e) { if (onend) setTimeout(fin, 0); }
 }
-function hush() { releaseGate(); speechTok++; if (hasSpeech) try { speechSynthesis.cancel(); } catch (e) { } }
+function hush() { releaseGate(); speechTok++; nameAudioStop(); if (hasSpeech) try { speechSynthesis.cancel(); } catch (e) { } }
+/* v30: how to say the child's name. A recording (Settings → For this child) is played in place of the
+   computer voice whenever Pip says the name. A recording of "Ismail" is built in. */
+const NAME_SND_BUILTIN = { ismail: "data:audio/mpeg;base64,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" };
+function nameSoundFor(p) { if (!p || !p.name) return ""; if (p.nameSound === "tts") return ""; return p.nameSound || NAME_SND_BUILTIN[String(p.name).trim().split(/\s+/)[0].toLowerCase()] || ""; }
+let NAME_AUD = null;
+function nameAudio() {
+  let src = ""; try { src = nameSoundFor(curProfile()); } catch (e) { }
+  if (!src) return null;
+  if (!NAME_AUD || NAME_AUD._src !== src) { try { NAME_AUD = new Audio(src); NAME_AUD._src = src; NAME_AUD.preload = "auto"; } catch (e) { NAME_AUD = null; } }
+  return NAME_AUD;
+}
+function nameAudioStop() { try { if (NAME_AUD && !NAME_AUD.paused) { NAME_AUD.pause(); NAME_AUD.currentTime = 0; } } catch (e) { } }
+function nsPaint() {
+  const h = document.getElementById("ns-hint"); if (!h) return; const p = curProfile();
+  h.textContent = !p.name ? "Add the child's name first." : p.nameSound === "tts" ? "Pip uses the computer voice for the name." : p.nameSound ? "Pip plays your recording of the name. ✔" : nameSoundFor(p) ? "Pip plays a built-in recording of this name. ✔ You can record your own." : "Pip uses the computer voice. Record the name to help Pip say it right.";
+}
+function nsSave(src) { const p = curProfile(); if (src && src.length > 400000) { toast("That sound is too long. Keep it under 3 seconds."); return; } p.nameSound = src; p.u = Date.now(); saveProfiles(); markDirty(p.id); NAME_AUD = null; nsPaint(); if (src && src !== "tts") speak(`Hi, ${kidName()}!`, true); }
+let NS_REC = null;
+document.addEventListener("click", async ev => {
+  const b = ev.target.closest && ev.target.closest("#ns-play,#ns-rec,#ns-tts"); if (!b) return;
+  if (b.id === "ns-play") { if (!kidName()) { toast("Add the child's name first."); return; } speak(`Listen carefully, ${kidName()}, before you answer.`, true); return; }
+  if (b.id === "ns-tts") { if (!kidName()) { toast("Add the child's name first."); return; } nsSave("tts"); speak(`Hi, ${kidName()}!`, true); return; }
+  if (!kidName()) { toast("Add the child's name first."); return; }
+  if (NS_REC) { NS_REC.stop(); return; }
+  if (!navigator.mediaDevices || !window.MediaRecorder) { toast("This browser can't record here. Use a sound file instead."); return; }
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true }), chunks = [], rec = new MediaRecorder(stream);
+    NS_REC = rec; b.textContent = "⏹ Stop"; toast("🎙️ Say the name now…");
+    rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+    rec.onstop = () => { stream.getTracks().forEach(tr => tr.stop()); NS_REC = null; b.textContent = "🎙️ Record"; const fr = new FileReader(); fr.onload = () => nsSave(fr.result); fr.readAsDataURL(new Blob(chunks, { type: rec.mimeType || "audio/webm" })); };
+    rec.start(); setTimeout(() => { if (NS_REC === rec) rec.stop(); }, 2500);
+  } catch (e) { NS_REC = null; toast("The microphone isn't available here. Use a sound file instead."); }
+});
+document.addEventListener("change", ev => {
+  if (!ev.target || ev.target.id !== "ns-file") return; const f = ev.target.files && ev.target.files[0]; if (!f) return;
+  if (!kidName()) { toast("Add the child's name first."); ev.target.value = ""; return; }
+  if (f.size > 300000) { toast("That file is too big. Use a short clip of just the name."); ev.target.value = ""; return; }
+  const fr = new FileReader(); fr.onload = () => nsSave(fr.result); fr.readAsDataURL(f); ev.target.value = "";
+});
+/* split one spoken phrase around the child's name: ["Listen carefully, ", NAME, ", before…"] */
+function nameSplit(p) {
+  const n = kidName(); if (!n || !nameAudio()) return [p];
+  const rx = new RegExp(`\\b(${n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})\\b`, "gi");
+  if (!rx.test(p)) return [p];
+  return p.split(rx).map(x => sameName(x, n) ? { name: 1 } : x).filter(x => typeof x !== "string" || /[a-z0-9]/i.test(x));
+}
 
 /* ---------- fx ---------- */
 const osReduced = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
@@ -32650,29 +32720,30 @@ function showQuestion() {
       Q.reading = false; lockAnswers(false); lockNav(false);
       Q.started = Date.now();
       if (q.wait) {
-        const grow = Q.t && Q.t.id === "stopthink" ? Math.min(3, Math.floor((Q.patRun || 0) / 3)) : 0;
+        const grow = 0; /* v31: fixed timing: 1.5 s red, 1.5 s yellow, then green */
         v27Light(q.wait + grow, tokQ, () => { Q.started = Date.now(); if (q.peek) v28Cover(true); if (secs) startTimer(secs); }, q.v27 && q.v27.tip, grow);
         return;
       }
       if (secs) startTimer(secs);
     };
-    setTimeout(unlock, ANSWER_WAIT_MS);
+    setTimeout(unlock, q.wait ? 0 : ANSWER_WAIT_MS); /* the light starts as soon as Pip finishes reading */
   });
 }
 /* v27: the wait-for-green light (patience). Red, then yellow for a moment, then green. Taps on red get a kind reminder. */
+const V31_STEP = 1500; /* each light (red, then yellow) lasts 1.5 seconds */
 function v27Light(secs, tok, then, tip, grow) {
   const el = document.getElementById("v27-light"); if (!el || !Q || Q.token !== tok) { then(); return; }
   const lt = el.querySelector(".v27-lt"), set = (c, msg) => { el.dataset.c = c; lt.textContent = msg; };
   if (tip) { const tp = document.getElementById("v28-tip"); if (tp) { tp.textContent = tip; tp.hidden = false; } }
   if (grow && grow > (Q.growShown || 0)) { Q.growShown = grow; toast(`⏳ Longer wait: you're getting so patient!`); }
   Q.waiting = true; set("r", "🔴 Wait for green… think!");
-  const red = Math.max(1, secs - 1) * 1000;
+  const red = V31_STEP;
   pTimeout(() => {
     if (!Q || Q.token !== tok) return; set("y", "🟡 Get ready…");
     pTimeout(() => {
       if (!Q || Q.token !== tok) return; Q.waiting = false; set("g", Q.early ? "🟢 Go! Now you can tap." : "🟢 Go! You waited. Great patience!");
       sfx("pop"); then();
-    }, 1000);
+    }, V31_STEP);
   }, red);
 }
 /* v28: hide or show the pictures in a "look and remember" question */
@@ -32932,7 +33003,7 @@ function openSettings() {
   $("set-sound").checked = settings.sound; $("set-voice").checked = settings.voice; $("set-autonext").checked = settings.autonext; $("set-ticking").checked = settings.ticking;
   $("set-pace").value = settings.pace || "relaxed"; $("set-readopts").checked = settings.readOpts !== false; $("set-explainov").checked = settings.explainOv !== false;
   $("set-rate").value = String(settings.rate); $("set-pause").value = String(settings.pause); $("set-ai").checked = settings.ai; syncAIStatus(); fillVoiceList(); $("reset-ask").hidden = true;
-  const cp = curProfile(); $("set-kidname").value = cp.name || ""; $("child-h").innerHTML = `${cp.avatar} For ${esc(profileName(cp))}`; $("child-prefs").innerHTML = childPrefsHTML(cp.id);
+  const cp = curProfile(); $("set-kidname").value = cp.name || ""; nsPaint(); $("child-h").innerHTML = `${cp.avatar} For ${esc(profileName(cp))}`; $("child-prefs").innerHTML = childPrefsHTML(cp.id);
   $("settings").hidden = false; $("set-timer").focus();
 }
 function closeSettings() { $("settings").hidden = true; }
@@ -36551,7 +36622,7 @@ function storyRead(st) {
   SR = { st, i: 0 };
   app.innerHTML = `<div class="lesson-head"><div><div class="eyebrow">Story Time · Age ${st.age}</div><h1><span class="emo">${st.icon}</span>${st.title}</h1></div></div>
     <div id="story-page"></div>
-    <div class="slide-nav"><button class="btn" data-act="sr-prev" id="sr-prev">◀ Back</button><div class="dots" id="sr-dots" aria-hidden="true"></div><button class="btn btn-go" data-act="sr-next" id="sr-next">Next page ▶</button></div>
+    <div class="slide-nav"><button class="btn" data-act="sr-prev" id="sr-prev">◀ Back</button><div class="dots sr-dots" id="sr-dots" role="group" aria-label="Pages"></div><button class="btn btn-go" data-act="sr-next" id="sr-next">Next page ▶</button></div>
     <div class="side-links"><button class="btn btn-sm" data-go="storyquiz-${st.id}"${progress["story-" + st.id] != null || (P.storiesRead || {})[st.id] ? "" : " hidden"}>❓ Skip to the questions</button><button class="btn btn-sm" data-go="stories">📚 Other stories</button></div>`;
   storyPage(0);
 }
@@ -36567,7 +36638,7 @@ function storyPage(i) {
     <div class="story-pic"><span class="emo">${pg.e}</span></div>
     <p class="story-text" id="story-text">${storyWords(pg.text)}</p>
     <div class="foot-btns"><button class="btn btn-sm btn-sun" data-act="sr-read" id="sr-read">🔊 Read to me</button><button class="btn btn-sm pause-sm" data-act="pause" aria-label="Pause everything"><span class="emo">⏸️</span> Pause</button></div></div>`;
-  $("sr-dots").innerHTML = st.pages.map((_, k) => `<span class="${k === SR.i ? "on" : k < SR.i ? "done" : ""}"></span>`).join("");
+  $("sr-dots").innerHTML = st.pages.map((_, k) => `<button type="button" class="sr-dot" data-act="sr-go" data-i="${k}" aria-label="Page ${k + 1}"${k === SR.i ? ' aria-current="page"' : ""}><span class="${k === SR.i ? "on" : k < SR.i ? "done" : ""}"></span></button>`).join("");
   $("sr-prev").disabled = SR.i === 0;
   const nb = $("sr-next"); nb.innerHTML = SR.i === n - 1 ? "Questions time! ❓" : "Next page ▶"; nb.classList.toggle("btn-sun", SR.i === n - 1); nb.classList.toggle("wiggle", SR.i === n - 1);
   /* Next page waits until Pip has read the page (or, with sound off, a reading time) */
@@ -36746,6 +36817,7 @@ function featureAct(a, el) {
   if (a === "daily-age") { P.lastAge = d.age ? +d.age : null; if (!d.age) { const p = curProfile(); p.age = null; p.u = Date.now(); saveProfiles(); } saveP(); render(curHash); return true; }
   if (a === "sr-next") { if (SR.i < SR.st.pages.length - 1) { sfx("page"); storyPage(SR.i + 1); } else { P.storiesRead = Object.assign({}, P.storiesRead, { [SR.st.id]: 1 }); saveP(); sfx("levelup"); go("storyquiz-" + SR.st.id); } return true; }
   if (a === "sr-prev") { sfx("page"); storyPage(SR.i - 1); return true; }
+  if (a === "sr-go") { const k = +d.i; if (SR && k !== SR.i && k >= 0 && k < SR.st.pages.length) { sfx("page"); storyPage(k); } return true; }
   if (a === "sr-read") { if (RA) { stopReadAlong(); if (SR && SR.unlock) pTimeout(SR.unlock, Math.max(0, SR.t0 + SR.minMs - Date.now())); } else readAlong(0, SR && SR.unlock ? () => pTimeout(SR.unlock, pace().after) : null); return true; }
   if (a === "open-parent") { closeSettings(); go("parent"); return true; }
   if (a === "gh-connect") {
@@ -37389,7 +37461,7 @@ document.addEventListener("change", ev => {
   if (ev.target && ev.target.id === "set-kidname") {
     const p = curProfile(); if (!p) return; const nv = ev.target.value.trim().replace(/\s+/g, " ").slice(0, 20);
     if (nv && findKidByName(nv, p.id)) { ev.target.value = p.name || ""; toast(`There's already a child named ${nv}`); return; }
-    p.name = nv; p.u = Date.now(); saveProfiles(); markDirty(p.id); paintWho();
+    p.name = nv; p.u = Date.now(); saveProfiles(); markDirty(p.id); paintWho(); NAME_AUD = null; nsPaint();
     const h = document.getElementById("child-h"); if (h) h.innerHTML = `${p.avatar} For ${esc(profileName(p))}`; toast("Saved ✔");
   }
 });
