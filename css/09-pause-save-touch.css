@@ -1,0 +1,114 @@
+/* ---- v16: one Pause button for everything ---- */
+.pause-btn{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 14px;border:0;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 2px var(--line),0 3px 0 var(--line-deep);font-family:var(--display);font-weight:600;font-size:16px;color:var(--ink);cursor:pointer;flex:none}
+.pause-btn span{font-family:var(--emoji);font-size:18px}
+.pause-btn:active{transform:translateY(2px);box-shadow:inset 0 0 0 2px var(--line),0 1px 0 var(--line-deep)}
+@media (max-width:560px){.pause-btn{padding:0;width:44px;justify-content:center}.pause-btn b{display:none}}
+.pause-sm{background:#F1F5FC}
+.pause-pill{position:fixed;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:90;display:flex;align-items:center;gap:10px;padding:8px 8px 8px 16px;background:#1D2B4F;color:#fff;border-radius:999px;box-shadow:0 8px 24px rgba(29,43,79,.35);max-width:calc(100vw - 32px);animation:fadeIn .2s ease}
+.pause-pill .pz-emo{font-size:20px}.pause-pill .pz-txt{font-family:var(--display);font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pause-pill small{opacity:.8;font-size:14px}
+.pause-pill .pz-go{white-space:nowrap}
+@media (max-width:520px){.pause-pill small{display:none}}
+.pause-btn.is-paused,.pause-sm.is-paused{background:var(--good);color:#fff;box-shadow:0 3px 0 #13804F;animation:pulse .8s ease infinite alternate}
+body.paused .q-right,body.paused #nextq,body.paused #next-btn,body.paused #prev-btn,body.paused #sr-next,body.paused #sr-prev,body.paused .dopt,body.paused .deep-actions,body.paused .tc-item{pointer-events:none}
+body.paused .pause-btn,body.paused .pause-sm{animation-play-state:running!important}
+.pause-ov{position:fixed;inset:0;z-index:90;background:rgba(29,43,79,.62);display:grid;place-items:center;padding:16px;cursor:pointer;animation:fadeIn .2s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.pause-card{background:#fff;border-radius:30px;padding:26px 28px 20px;width:min(380px,100%);text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 10px 0 rgba(0,0,0,.15)}
+.pz-emo{font-family:var(--emoji);font-size:64px;line-height:1}
+.pz-title{font-family:var(--display);font-weight:700;font-size:34px}
+.pz-sub{color:var(--muted);font-size:17px}
+.pz-go{font-size:22px;padding:16px 28px;margin-top:6px}
+.pz-hint{color:var(--muted);font-size:13px}
+body.paused #app *,body.paused #app *::before,body.paused #app *::after,body.paused .ov,body.paused .ov *,body.paused #fx *{animation-play-state:paused!important}
+body.paused .track .rocket,body.paused .tr-fg{transition:none!important}
+/* ---- v17: GitHub save + backup ---- */
+.gh-setup{margin-top:4px}
+.gh-steps{padding-left:22px;margin:10px 0;font-size:15px;display:flex;flex-direction:column;gap:6px}
+.gh-setup .fl{display:flex;flex-direction:column;gap:4px;font-family:var(--display);font-weight:600;font-size:15px;margin-top:10px}
+.gh-setup .fl input{width:100%;max-width:100%;font-size:17px;padding:10px 12px}
+.dsec code{background:#F1F5FC;border:1px solid var(--line);border-radius:6px;padding:0 5px;font-size:.92em;overflow-wrap:anywhere}
+#save-sec label.btn{cursor:pointer}
+/* ---- v18: iPad and touch ---- */
+html{-webkit-tap-highlight-color:transparent}
+body{min-height:100vh;min-height:100dvh;overscroll-behavior-y:none}
+.panel{max-height:calc(100dvh - 32px)}
+#app,.bar,.overlay,.ov,.pause-ov,#pinpad{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+#app input,#app textarea,.overlay input,.ai-msg,.cmap td,.sync-box{-webkit-user-select:text;user-select:text}
+button,label,select,summary,[data-go],[data-act],.opt,.tab,.topic,.age-card,.story-text .w{touch-action:manipulation}
+.wrap-page{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+.bar-in{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+.q-body,.q-right{display:flex;flex-direction:column;gap:18px;min-width:0}
+/* on touch screens a "hover" sticks after a tap, so the same spot on the next question looked selected */
+@media (hover:none){
+  .crumbs button:hover{background:none;color:var(--muted)}
+  .age-card:hover,.topic:hover{transform:none}
+  .topic:hover{border-color:var(--line)}
+  .pic-card:hover{border-color:var(--line)}
+  .opt:not(.on):hover:not([disabled]){box-shadow:inset 0 0 0 3px var(--line),0 5px 0 var(--line-deep)}
+  .say-opt:hover{border-color:var(--line);background:#fff}
+  .story-text .w:hover{background:none}
+  .opt:active:not([disabled]){box-shadow:inset 0 0 0 3px var(--age),0 2px 0 var(--age-deep);transform:translateY(3px)}
+}
+/* bigger targets for fingers */
+@media (pointer:coarse){
+  .say-opt{width:42px;height:42px;font-size:18px}
+  .opt{padding-right:58px}
+  .srt-bin{min-height:48px;padding:12px 16px}
+  .kid-edit{width:44px;height:44px}
+  .crumbs button{padding:8px}
+  .linkish{padding:6px 0}
+  .cal-d{min-height:36px}
+}
+/* iPad held sideways (and other wide, short screens): picture on the left, answers on the right,
+   so the question, the choices and Pip's feedback all fit without scrolling */
+@media (orientation:landscape) and (min-width:900px) and (max-height:920px){
+  .q-card{gap:14px;padding-top:16px;padding-bottom:18px}
+  .q-text{font-size:clamp(21px,2.3vw,26px)}
+  .q-body.has-vis{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:20px;align-items:start}
+  .q-body.has-vis .q-vis{min-height:100%;justify-content:center}
+  .q-body.has-vis .opts.long{grid-template-columns:minmax(0,1fr)}
+  .q-body.has-vis .opt{min-height:66px}
+  .q-body.has-vis .feedback{padding:12px 14px}
+  .slide-card{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"top top" "h2 h2" "vis foot";column-gap:24px;row-gap:12px;min-height:0;align-items:start}
+  .slide-card>.slide-top{grid-area:top}
+  .slide-card>h2{grid-area:h2}
+  .slide-card>.slide-vis{grid-area:vis;min-height:100%}
+  .slide-card>.slide-foot{grid-area:foot;flex-direction:column;align-items:stretch;justify-content:center;height:100%}
+  .slide-card>.slide-foot .slide-txt{font-size:21px}
+  .slide-card.story-card-big{grid-template-areas:"top top" "pic text" "pic btns"}
+  .story-card-big>.story-pic{grid-area:pic;min-height:100%}
+  .story-card-big>.story-text{grid-area:text}
+  .story-card-big>.foot-btns{grid-area:btns}
+}
+/* iPad held upright: use the extra room for bigger answers */
+@media (orientation:portrait) and (min-width:740px){
+  .opt{min-height:88px;font-size:23px}
+  .q-text{font-size:28px}
+}
+/* iPad sideways: tighter spacing, and use the width for sort/order/keypad questions */
+@media (orientation:landscape) and (min-width:900px) and (max-height:920px){
+  .wrap-page{padding-top:12px}
+  .quiz-top{margin-bottom:8px}
+  .q-card{gap:12px;padding:14px clamp(14px,2.4vw,26px) 16px}
+  .q-body,.q-right{gap:12px}
+  .q-vis{padding:10px 8px}
+  .q-body.has-vis .opt{min-height:58px;padding-top:8px;padding-bottom:8px}
+  .feedback{padding:10px 14px;gap:10px}
+  .fb-icon{width:46px;height:46px;font-size:24px}
+  .srt{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .srt>.k-row{grid-column:1/-1;margin-top:0}
+  .srt-item{padding:6px 8px}
+  .ord{gap:8px}
+  .ord-pool{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .ord-slot,.ord-chip{min-height:52px}
+  .kp{display:grid;grid-template-columns:auto auto;grid-template-areas:"show keys" "ok keys";justify-content:center;align-items:center;column-gap:32px;row-gap:14px}
+  .kp-show{grid-area:show}.kp-keys{grid-area:keys}.kp-ok{grid-area:ok}
+  .kp-k{height:52px}
+  .opts.multi.n5,.opts.multi.n6{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .opts.multi .opt{min-height:62px}
+}
+@media (orientation:landscape) and (min-width:900px) and (max-height:720px){
+  .q-head .q-btns{flex-direction:row}
+  .opt{min-height:56px}
+  .q-text{font-size:21px}
+}

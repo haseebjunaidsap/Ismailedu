@@ -1,0 +1,36 @@
+
+:root{
+  color-scheme:light;
+  --ground:#E8F2FF; --ground-line:rgba(61,123,255,.07);
+  --card:#FFFFFF; --ink:#1D2B4F; --muted:#51638A; --line:#C9D9F2; --line-deep:#A9BFE3;
+  --sun:#FFC93C; --sun-deep:#D9A21A;
+  --good:#138A5B; --good-bg:#E0F7EC; --bad:#D63C42; --bad-bg:#FDE7E8;
+  --a6:#FF7A59; --a6-deep:#D6532F; --a6-soft:#FFE8E0;
+  --a7:#1FAF6E; --a7-deep:#128452; --a7-soft:#DDF6EA;
+  --a8:#3D7BFF; --a8-deep:#2458CC; --a8-soft:#E1EBFF;
+  --a9:#9B5DE5; --a9-deep:#7437C2; --a9-soft:#EFE4FC;
+  --age:#3D7BFF; --age-deep:#2458CC; --age-soft:#E1EBFF;
+  --display:"Fredoka","Trebuchet MS","Arial Rounded MT Bold",sans-serif;
+  --read:"Andika","Century Gothic","Segoe UI",system-ui,sans-serif;
+  --emoji:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
+  --r:20px;
+}
+body[data-age="6"]{--age:var(--a6);--age-deep:var(--a6-deep);--age-soft:var(--a6-soft)}
+body[data-age="7"]{--age:var(--a7);--age-deep:var(--a7-deep);--age-soft:var(--a7-soft)}
+body[data-age="8"]{--age:var(--a8);--age-deep:var(--a8-deep);--age-soft:var(--a8-soft)}
+body[data-age="9"]{--age:var(--a9);--age-deep:var(--a9-deep);--age-soft:var(--a9-soft)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--ground); color:var(--ink); font-family:var(--read); font-size:18px; line-height:1.5;
+  background-image:linear-gradient(var(--ground-line) 1px,transparent 1px),linear-gradient(90deg,var(--ground-line) 1px,transparent 1px);
+  background-size:28px 28px; min-height:100vh;
+}
+button{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.15;margin:0;text-wrap:balance}
+h1{font-size:clamp(28px,5vw,40px)} h2{font-size:clamp(22px,3.6vw,28px)} h3{font-size:21px}
+.emo{font-family:var(--emoji);font-style:normal;line-height:1}
+.emo.lg{font-size:34px}.emo.xl{font-size:52px}.emo.xxl{font-size:72px}
+:focus-visible{outline:3px solid var(--sun-deep);outline-offset:3px}
+.wrap-page{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:20px 60px}
+

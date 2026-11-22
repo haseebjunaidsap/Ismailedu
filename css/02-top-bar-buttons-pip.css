@@ -1,0 +1,34 @@
+/* ---- top bar ---- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--line)}
+.bar-in{max-width:1080px;margin:0 auto;padding:8px 16px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:8px;background:none;border:0;cursor:pointer;padding:4px 6px;border-radius:12px;font-family:var(--display);font-weight:700;font-size:20px;color:var(--ink);white-space:nowrap}
+.brand svg{width:38px;height:38px}
+.crumbs{flex:1;min-width:0;display:flex;align-items:center;gap:4px;font-family:var(--display);font-weight:500;font-size:15px;color:var(--muted);overflow:hidden;white-space:nowrap}
+.crumbs button{background:none;border:0;cursor:pointer;color:var(--muted);padding:4px 6px;border-radius:8px;font-family:var(--display);font-weight:500}
+.crumbs button:hover{background:var(--age-soft);color:var(--ink)}
+.crumbs .cur{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.crumbs .sep{opacity:.5}
+.bar-actions{display:flex;gap:6px;margin-left:auto}
+.icon-btn{width:44px;height:44px;border-radius:14px;border:2px solid var(--line);background:#fff;cursor:pointer;font-family:var(--emoji);font-size:20px;display:grid;place-items:center;box-shadow:0 3px 0 var(--line);flex:none}
+.icon-btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--line)}
+@media (max-width:640px){.brand span{display:none}.crumbs{font-size:14px}}
+
+/* ---- chunky buttons ---- */
+.btn{font-family:var(--display);font-weight:600;font-size:18px;line-height:1;border:0;border-radius:16px;padding:14px 20px;background:#fff;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;box-shadow:inset 0 0 0 2px var(--line),0 4px 0 var(--line-deep);transition:transform .08s,box-shadow .08s;text-decoration:none}
+.btn:active{transform:translateY(3px);box-shadow:inset 0 0 0 2px var(--line),0 1px 0 var(--line-deep)}
+.btn-go{background:var(--age);color:#fff;box-shadow:0 4px 0 var(--age-deep)}
+.btn-go:active{box-shadow:0 1px 0 var(--age-deep)}
+.btn-sun{background:var(--sun);color:var(--ink);box-shadow:0 4px 0 var(--sun-deep)}
+.btn-sun:active{box-shadow:0 1px 0 var(--sun-deep)}
+.btn-sm{font-size:16px;padding:10px 14px;border-radius:13px}
+.btn[disabled]{opacity:.45;cursor:default;transform:none}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+
+/* ---- Pip ---- */
+.pip-talk{display:flex;align-items:flex-end;gap:14px}
+.pip-talk .pip{width:92px;height:92px;flex:none;animation:bob 3s ease-in-out infinite}
+.bubble{position:relative;background:#fff;border:2px solid var(--line);border-radius:22px;padding:14px 18px;font-size:19px;max-width:520px;box-shadow:0 4px 0 var(--line)}
+.bubble::before{content:"";position:absolute;left:-12px;bottom:18px;border:10px solid transparent;border-right-color:var(--line);border-left:0}
+.bubble::after{content:"";position:absolute;left:-8px;bottom:20px;border:8px solid transparent;border-right-color:#fff;border-left:0}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+

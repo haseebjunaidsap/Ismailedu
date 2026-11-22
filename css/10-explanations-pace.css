@@ -1,0 +1,24 @@
+/* ---- v19: Next waits for Pip ---- */
+#nextq:disabled{background:#C7D0DE;color:#fff;box-shadow:0 4px 0 #A7B2C4;opacity:1;cursor:not-allowed;transform:none;filter:saturate(.4)}
+#nextq:disabled::before{content:"🔊";display:inline-block;font-family:var(--emoji);margin-right:2px;animation:pulse .7s ease infinite alternate}
+#nextq:not(:disabled){animation:popIn .3s}
+/* ---- v20: why the picked answer is wrong ---- */
+.fb-wrong{font-size:17px;color:var(--ink);margin:2px 0 4px}
+.fb-wrong b{color:var(--bad)}
+@media (orientation:landscape) and (min-width:900px) and (max-height:920px){.fb-wrong{font-size:15.5px;margin:0 0 2px}.fb-why{font-size:15.5px}.feedback .fb-title{font-size:21px}}
+/* ---- v21: learning pace ---- */
+#next-btn:disabled,#sr-next:disabled,#prev-btn[data-locked],#sr-prev[data-locked],.side-links button:disabled,.deep-actions button:disabled,#deep [data-act="deep-new"]:disabled{background:#C7D0DE;color:#fff;box-shadow:0 4px 0 #A7B2C4;opacity:1;cursor:not-allowed;filter:saturate(.4);transform:none}
+#next-btn:disabled::before,#sr-next:disabled::before{content:"🔊";display:inline-block;font-family:var(--emoji);margin-right:4px;animation:pulse .7s ease infinite alternate}
+.bar .brand:disabled,.crumbs button:disabled,.stk-btn:disabled,#who-btn:disabled{opacity:.45;cursor:not-allowed}
+.q-right.reading .opt,.q-right.reading .ord-chip,.q-right.reading .srt-bin,.q-right.reading .kp-k{cursor:default}
+.q-right.reading .opt-wrap:not(.reading-now) .opt{opacity:.75}
+.opt-wrap.reading-now .opt{box-shadow:inset 0 0 0 4px var(--sun),0 5px 0 var(--sun-deep);background:#FFF9E6;opacity:1;transform:scale(1.03);transition:transform .2s}
+.q-right.reading .opt:disabled{opacity:.75}
+.q-right.reading::before{content:"👂 Listen to Pip…";display:block;text-align:center;font-family:var(--display);font-weight:600;color:var(--age-deep);margin-bottom:-4px;animation:pulse 1s ease infinite alternate}
+@media (max-width:400px){.hud{flex-wrap:wrap;justify-content:flex-end;gap:6px;flex:1 1 auto;min-width:0}}
+.foot-btns button[data-locked],.feedback button[data-locked],.ai-chip[data-locked],#ai-form [data-locked],.q-btns button[data-locked],.say-opt[data-locked],.hint-btn[data-locked]{opacity:.45;cursor:not-allowed;filter:saturate(.3);box-shadow:none;transform:none}
+/* ---- confetti ---- */
+#fx{position:fixed;inset:0;pointer-events:none;z-index:40;overflow:hidden}
+#fx i{position:absolute;top:-16px;width:10px;height:15px;border-radius:3px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(760deg)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
